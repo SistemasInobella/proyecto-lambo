@@ -1,0 +1,25 @@
+{
+  "name": "proyect-lambo",
+  "version": "1.0.0",
+  "description": "\"# Proyecto lambo\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SistemasInobella/proyecto-lambo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SistemasInobella/proyecto-lambo/issues"
+  },
+  "homepage": "https://github.com/SistemasInobella/proyecto-lambo#readme",
+  "dependencies": {
+    "json2csv": "^6.0.0-alpha.2",
+    "xml2js": "^0.6.2"
+  }
+}
