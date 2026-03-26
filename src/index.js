@@ -19,7 +19,7 @@ async function main() {
     const json = await parser.parseStringPromise(xmlData);
 
     const transformed = transformData(json);
-    results.push(transformed);
+    results.push(...transformed);
   }
 
   generateCSV(results);

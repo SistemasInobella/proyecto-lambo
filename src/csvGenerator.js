@@ -2,7 +2,7 @@ const { Parser } = require('json2csv');
 const fs = require('fs');
 
 function generateCSV(data) {
-  const fields = ['vendor', 'total', 'fecha'];
+  const fields = ['vendor', 'fecha', 'articulo', 'cantidad', 'importe'];
 
   const parser = new Parser({ fields });
   const csv = parser.parse(data);
