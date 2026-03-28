@@ -8,7 +8,7 @@ const parser = new xml2js.Parser();
 
 const manualData = {
   idExterno: "810210",
-  proveedor: "GONTELLE",
+  //proveedor: "GONTELLE",
   solicita: "Juan islas",
   autoriza: "Juan Islas",
   elaboro: "Juan Islas",
@@ -29,11 +29,16 @@ async function main() {
   for (const file of files) {
     if (!file.endsWith('.xml')) continue;
 
-    const xmlData = fs.readFileSync(path.join(folderPath, file), 'utf8');
-    const json = await parser.parseStringPromise(xmlData);
+    try {
+      const xmlDate = fs.readFile(path.join(folderPath,file),'utf8');
+      const json = await parser.parseStringPromise(xmlDate);
 
-    const transformed = transformData(json, manualData);
-    results.push(...transformed);
+      const transformed = transformData(json, manualData);
+      
+      results.push(...transformed);
+    }catch (error) {
+      console.error(`Error en archivo ${file}:`, error.message)
+    } 
   }
 
   generateCSV(results);

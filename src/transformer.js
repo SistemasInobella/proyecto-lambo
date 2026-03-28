@@ -2,6 +2,11 @@ function transformData(json, manualData) {
 
   const comprabante = json['cfdi:Comprobante'];
 
+  //Error en el caso de que el XML no contenga conceptos
+  if (!comprabante) {
+    throw new Error("XML inválido: no contiene Comprobante");
+  }
+
   const monedaMap = {
     "MXN": "Peso Mexican",
     "USD": "US Dollar",      //Mapeo de campos
@@ -28,6 +33,12 @@ function transformData(json, manualData) {
 
   //Extraccion del UUID
   const uuid = comprabante['cfdi:Complemento'][0]['tfd:TimbreFiscalDigital'][0]['$'].UUID;
+
+  //Error en el caso de que el XML no contenga UUID
+  if (!uuid) {
+    throw new Error('UUID no encontrado');
+  }
+
  //Extraccion de campos del XML
   const fechaRaw = comprabante['$'].Fecha;
   const fecha = fechaRaw.split('T')[0];
@@ -35,18 +46,24 @@ function transformData(json, manualData) {
   const formaPago = comprabante['$'].FormaPago;
   const metodoPago = comprabante['$'].MetodoPago;
 
+  const prov = comprabante['cfdi:Emisor'][0]['$'].Nombre;
+
   const serie = comprabante['$'].Serie || "";
   const folio = comprabante['$'].Folio || ""; 
 
-  const nota = `${serie}-${folio}` //Preguntar que diferencia tienen estos const
+  const nota = `${serie}${folio}` //Preguntar que diferencia tienen estos const
 
   const conceptos = comprabante['cfdi:Conceptos'][0]['cfdi:Concepto'];
+//Error en el caso de que el XML no contenga conceptos
+  if (!conceptos) {
+    throw new Error('XML sin conceptos');
+  }
 
   const lineas = conceptos.map(c => {
     return{
       idExterno: manualData.idExterno,
       nºreferencia: uuid,
-      proveedor: manualData.proveedor,
+      proveedor: prov,
       nota: nota,
       moneda: monedaMap[moneda] || moneda,
       fecha: fecha,
