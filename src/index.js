@@ -3,9 +3,15 @@ const path = require('path');
 const xml2js = require('xml2js');
 const { transformData } = require('./transformer');
 const { generateCSV } = require('./csvGenerator');
-
+const proveedoresValidos = [
+  "FRANQUICIAS CON TRADICION",
+  "GONTELLE",
+  "PROVEEDOR PRUEBA"
+];
+const transformed = transformData(json, manualData, proveedoresValidos);
 const parser = new xml2js.Parser();
 
+//campos Manuales
 const manualData = {
   idExterno: "810210",
   //proveedor: "GONTELLE",
@@ -30,16 +36,21 @@ async function main() {
     if (!file.endsWith('.xml')) continue;
 
     try {
-      const xmlDate = fs.readFile(path.join(folderPath,file),'utf8');
-      const json = await parser.parseStringPromise(xmlDate);
+      const xmlData = fs.readFileSync(path.join(folderPath, file), 'utf8');
+      const json = await parser.parseStringPromise(xmlData);
 
       const transformed = transformData(json, manualData);
+
+      //console.log("📄 XML leído:", xmlData.substring(0, 200));
       
+     // console.log("📂 Archivos encontrados:", files);
+      //console.log("👉 Procesando archivo:", file);
+
       results.push(...transformed);
     }catch (error) {
-      console.error(`Error en archivo ${file}:`, error.message)
-    } 
-  }
+      console.error(`Error en archivo ${file}:`, error.message);
+    };
+  };
 
   generateCSV(results);
 }

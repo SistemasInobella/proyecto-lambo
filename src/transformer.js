@@ -1,9 +1,13 @@
-function transformData(json, manualData) {
+function transformData(json, manualData, proveedoresValidos) {
 
-  const comprabante = json['cfdi:Comprobante'];
+  if (!proveedoresValidos.includes(prov)) {
+  throw new Error(`Proveedor no existe en NetSuite: ${prov}`);
+  }
+
+  const comprobante = json['cfdi:Comprobante'];
 
   //Error en el caso de que el XML no contenga conceptos
-  if (!comprabante) {
+  if (!comprobante) {
     throw new Error("XML inválido: no contiene Comprobante");
   }
 
@@ -28,11 +32,11 @@ function transformData(json, manualData) {
 
   const metodoPagoMap = {
     "PPD": "PPD Pago en parcialidades o diferido",
-    "PUE": "PPD Pago en parcialidades o diferido"   //Mapeo de campos
+    "PUE": "PUE Pago en una sola exhibición"   //Mapeo de campos
   }
 
   //Extraccion del UUID
-  const uuid = comprabante['cfdi:Complemento'][0]['tfd:TimbreFiscalDigital'][0]['$'].UUID;
+  const uuid = comprobante['cfdi:Complemento'][0]['tfd:TimbreFiscalDigital'][0]['$'].UUID;
 
   //Error en el caso de que el XML no contenga UUID
   if (!uuid) {
@@ -40,20 +44,20 @@ function transformData(json, manualData) {
   }
 
  //Extraccion de campos del XML
-  const fechaRaw = comprabante['$'].Fecha;
+  const fechaRaw = comprobante['$'].Fecha;
   const fecha = fechaRaw.split('T')[0];
-  const moneda = comprabante['$'].Moneda;
-  const formaPago = comprabante['$'].FormaPago;
-  const metodoPago = comprabante['$'].MetodoPago;
+  const moneda = comprobante['$'].Moneda;
+  const formaPago = comprobante['$'].FormaPago;
+  const metodoPago = comprobante['$'].MetodoPago;
 
-  const prov = comprabante['cfdi:Emisor'][0]['$'].Nombre;
+  const prov = comprobante['cfdi:Emisor'][0]['$'].Nombre;
 
-  const serie = comprabante['$'].Serie || "";
-  const folio = comprabante['$'].Folio || ""; 
+  const serie = comprobante['$'].Serie || "";
+  const folio = comprobante['$'].Folio || ""; 
 
   const nota = `${serie}${folio}` //Preguntar que diferencia tienen estos const
 
-  const conceptos = comprabante['cfdi:Conceptos'][0]['cfdi:Concepto'];
+  const conceptos = comprobante['cfdi:Conceptos'][0]['cfdi:Concepto'];
 //Error en el caso de que el XML no contenga conceptos
   if (!conceptos) {
     throw new Error('XML sin conceptos');

@@ -29,7 +29,7 @@ function generateCSV(data) {
   const parser = new Parser({ fields });
   const csv = parser.parse(data);
 
-  fs.writeFileSync('./output_csv/output.csv', csv);
+  fs.writeFileSync('./output_csv/output.csv', '\uFEFF' + csv);
 
   console.log(" CSV generado correctamente");
 }
