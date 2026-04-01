@@ -1,8 +1,5 @@
-function transformData(json, manualData, proveedoresValidos) {
+function transformData(json, manualData) {
 
-  if (!proveedoresValidos.includes(prov)) {
-  throw new Error(`Proveedor no existe en NetSuite: ${prov}`);
-  }
 
   const comprobante = json['cfdi:Comprobante'];
 

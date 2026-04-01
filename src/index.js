@@ -3,12 +3,7 @@ const path = require('path');
 const xml2js = require('xml2js');
 const { transformData } = require('./transformer');
 const { generateCSV } = require('./csvGenerator');
-const proveedoresValidos = [
-  "FRANQUICIAS CON TRADICION",
-  "GONTELLE",
-  "PROVEEDOR PRUEBA"
-];
-const transformed = transformData(json, manualData, proveedoresValidos);
+
 const parser = new xml2js.Parser();
 
 //campos Manuales
