@@ -13,8 +13,11 @@
         
         <input type="file" name="xmlFiles" multiple />
 
-        <label>Solicita<u/label>
-            <select name="solicita" id="solicita"><select>
+        <label>ID Externo</label>
+        <input type="text" name="idExterno" placeholder="Ej: 810210" required />
+        
+        <label>Solicita</label>
+            <select name="solicita" id="solicita"></select><br><br>
                 <script>
                     const usuario =[
                         "58 RAFAEL DE LA CRUZ",
@@ -155,15 +158,149 @@
                         "MARIANA JIMENEZ GONZALEZ"
                     ];
 
-                    const selectElement = document.getElementById("solicita");
+                    function llenarSelect(id, data) {
+                        const select = document.getElementById(id);
 
-                    usuario.forEach(user => {
+                        data.forEach(item => {
+                            const option = document.createElement("option");
+                            option.value = item;
+                            option.textContent = item;
+                            select.appendChild(option);
+                        });
+                    }
+
+                    llenarSelect("solicita", usuario);
+                    
+                    
+                </script>
+            
+
+            <label>Autoriza</label>
+            <select name="autoriza" id="autoriza"></select><br><br>
+            <script>
+                llenarSelect("autoriza", usuario);
+            </script>
+        
+            <label>Elaborado por</label>
+            <select name="elabora" id="elabora"></select><br><br>
+            <script>
+                llenarSelect("elabora", usuario);
+            </script>
+
+            <label>Departamento</label>
+            <select name="departamento" id="departamento"></select><br><br>
+                <script>
+                    const depart = [
+                        "ALMACÉN",
+                        "ALMACÉN : ALMACEN AUTOSERVICIO",
+                        "ALMACÉN : CEDIS",
+                        "AUTOSERVICIO",
+                        "COMPRAS",
+                        "CONTABILIDAD",
+                        "CONTABILIDAD : CRÉDITO Y COBRANZA",
+                        "CONTABILIDAD : TESORERIA",
+                        "DIRECCION",
+                        "DIRECCION : DIRECCCION GENERAL",
+                        "DIRECCION : DIRECCION ADMINISTRATIVA",
+                        "ECOMMERCE",
+                        "ECOMMERCE : AMAZON",
+                        "ECOMMERCE : BELLEZA EN LINEA",
+                        "ECOMMERCE : MERCADO LIBRE",
+                        "INTENDENCIA",
+                        "MANTENIMIENTO",
+                        "MERCADOTÉCNIA : SOCIAL MEDIA",
+                        "NUEVOS PROYECTOS",
+                        "OFICINA MEXICO",
+                        "RECURSOS HUMANOS",
+                        "RECURSOS HUMANOS : CAPACITACION",
+                        "RECURSOS HUMANOS : NOMINAS",
+                        "RECURSOS HUMANOS : RECEPCION",
+                        "RECURSOS HUMANOS : RECLUTAMIENTO",
+                        "TECNOLOGÍA DE LA INFORMACIÓN",
+                        "VENTAS",
+                        "VENTAS : MAYOREO",
+                        "VENTAS : TELEMARKETING",
+                        "VIGILANCIA"
+                    ];
+
+                    const selectElement3 = document.getElementById("departamento");
+
+                    depart.forEach(user => {
                         const option = document.createElement("option");
                         option.value = user;
                         option.textContent = user;
-                        selectElement.appendChild(option);
+                        selectElement3.appendChild(option);
                     });
                 </script>
+            
+            <label>Clase</label>
+            <select name="clase" id="clase">
+                <option value="ATENEA">ATENEA</option>
+                <option value="Colaboración Luis Torres">Colaboración Luis Torres</option>
+                <option value="Colaboración Rosy McMichael">Colaboración Rosy McMichael</option>
+                <option value="DG">DG</option>
+                <option value="Expo CDMX">Expo CDMX</option>
+                <option value="Expo GDL">Expo GDL</option>
+                <option value="MH BEAUTY">MH BEAUTY</option>
+                <option value="Supplies">Supplies</option>
+                <option value="Thue Lashes">Thue Lashes</option>
+                <option value="TRUE MAKEUP">TRUE MAKEUP</option>
+            </select><br><br>
+
+            <label>Canal de Venta</label>
+            <select name="canalVenta" id="cv">
+                <option value="AUTOSERVICIO">AUTOSERVICIO</option>
+                <option value="ECOMMERCE">ECOMMERCE</option>
+                <option value="MAYOREO">MAYOREO</option>
+                <option value="TELEMARKETING">TELEMARKETING</option>
+            </select><br><br>
+
+            <label>Estado de Aprobación</label>
+            <select name="estadoAprobacion" id="est_aprob">
+                <option value="Pending Approval">Pendiente de Aprobación</option>
+                <option value="Approved">Aprobado</option>
+                <option value="Rejected">Rechasado</option>
+            </select><br><br>
+
+            <label>Código de Impuesto</label>
+            <select name="codigoImpuesto" id="cod_imp"></select><br><br>
+            <script>
+                const codImp = [
+                    "ISR:GPO IVA 16% / IVA RETENIDO 16% pgos al extranjero",
+                    "ISR:GPO RESICO IVA 0%",
+                    "ISR:GPO RET ARRNDAMIENTO INMUEBLES",
+                    "ISR:GPO RET ARRNDAMIENTO RESICO",
+                    "ISR:GPO RET IVA 8%, ISR 1.25%",
+                    "ISR:GPO RET RESICO",
+                    "ISR:GPO RET S.PROFECIONALES (RESICO)",
+                    "ISR:GPO RET SERVICIOS PERSOLNALES (RESICO)",
+                    "IVA 8%:IVA 8%",
+                    "IVA acreditable 16% pagos al extranjero:IVA ACRED. 16% PAGOS AL EXTRANJERO",
+                    "IVA acreditable 4%:IVA 4%",
+                    "IVA_MX 16%:GPO RET COMISION",
+                    "IVA_MX 16%:IVA16%",
+                    "RET ISR HONORARIOS 10%:RET ISR HONORARIOS 10%",
+                    "RET ISR RENTAS 10%:RET ISR RENTAS 10%",
+                    "RET IVA 16% pagos al extranjero:RET. IVA 16% pagos al extranjero",
+                    "RET IVA FLETE 4%:GPO RET IVA FLETES 4%",
+                    "RET IVA FLETE 4%:RET IVA FLETES 4%",
+                    "RET IVA HONORARIOS 10.67%:GPO RET HONORARIOS",
+                    "RET IVA HONORARARIOS 10.67%:RET IVA HONORARIOS 10.67%",
+                    "RET IVA RENTAS 10.67%:GPO RET IVA RENTAS",
+                    "VAT_MX:GPO RET SERVICIOS PERSONALES",
+                    "VAT_MX:UNDEF-MX"
+                ];
+
+                const selectElement4 = document.getElementById("cod_imp");
+
+                    codImp.forEach(user => {
+                        const option = document.createElement("option");
+                        option.value = user;
+                        option.textContent = user;
+                        selectElement4.appendChild(option);
+                    });
+            </script>
+
 
         <button type="submit">Generar CSV</button>
     </form>
