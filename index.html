@@ -11,15 +11,66 @@
 
     <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
         
-        <input type="file" name="xmlFiles" multiple />
+        <input type="file" name="xmlFiles" multiple /><BR></BR>
 
         <label>ID Externo</label>
-        <input type="text" name="idExterno" placeholder="Ej: 810210" required />
+        <input type="text" name="idExterno" placeholder="Ej: 810210" required /><BR></BR>
         
         <label>Solicita</label>
             <select name="solicita" id="solicita"></select><br><br>
-                <script>
-                    const usuario =[
+
+            <label>Autoriza</label>
+            <select name="autoriza" id="autoriza"></select><br><br>
+        
+            <label>Elaborado por</label>
+            <select name="elabora" id="elabora"></select><br><br>
+
+            <label>Departamento</label>
+            <select name="departamento" id="departamento"></select><br><br>
+            
+            <label>Clase</label>
+            <select name="clase" id="clase">
+                <option value=""></option>
+                <option value="ATENEA">ATENEA</option>
+                <option value="Colaboración Luis Torres">Colaboración Luis Torres</option>
+                <option value="Colaboración Rosy McMichael">Colaboración Rosy McMichael</option>
+                <option value="DG">DG</option>
+                <option value="Expo CDMX">Expo CDMX</option>
+                <option value="Expo GDL">Expo GDL</option>
+                <option value="MH BEAUTY">MH BEAUTY</option>
+                <option value="Supplies">Supplies</option>
+                <option value="Thue Lashes">Thue Lashes</option>
+                <option value="TRUE MAKEUP">TRUE MAKEUP</option>
+            </select><br><br>
+
+            <label>Canal de Venta</label>
+            <select name="canalVenta" id="cv">
+                <option value=""></option>
+                <option value="AUTOSERVICIO">AUTOSERVICIO</option>
+                <option value="ECOMMERCE">ECOMMERCE</option>
+                <option value="MAYOREO">MAYOREO</option>
+                <option value="TELEMARKETING">TELEMARKETING</option>
+            </select><br><br>
+
+            <label>Estado de Aprobación</label>
+            <select name="estadoAprobacion" id="est_aprob">
+                <option value=""></option>
+                <option value="Pending Approval">Pendiente de Aprobación</option>
+                <option value="Approved">Aprobado</option>
+                <option value="Rejected">Rechasado</option>
+            </select><br><br>
+
+            <label>Código de Impuesto</label>
+            <select name="codigoImpuesto" id="cod_imp"></select><br><br>
+
+            <label>Cuenta</label>
+            <select name="cuenta" id="cuenta"></select><br><br>
+
+        <button type="submit">Generar CSV</button>
+    </form>
+    <script>
+        const usuario =[
+                        "",
                         "58 RAFAEL DE LA CRUZ",
                         "63 ANDREA URZUA",
                         "64 ALFREDO OLAGUE",
@@ -158,39 +209,23 @@
                         "MARIANA JIMENEZ GONZALEZ"
                     ];
 
-                    function llenarSelect(id, data) {
-                        const select = document.getElementById(id);
+        function llenarSelect(id, data) {
+            const select = document.getElementById(id);
 
-                        data.forEach(item => {
-                            const option = document.createElement("option");
-                            option.value = item;
-                            option.textContent = item;
-                            select.appendChild(option);
-                        });
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item;
+                option.textContent = item;
+                select.appendChild(option);
+            });
                     }
 
-                    llenarSelect("solicita", usuario);
-                    
-                    
-                </script>
-            
+        llenarSelect("solicita", usuario);
+        llenarSelect("autoriza", usuario);
+        llenarSelect("elabora", usuario);
 
-            <label>Autoriza</label>
-            <select name="autoriza" id="autoriza"></select><br><br>
-            <script>
-                llenarSelect("autoriza", usuario);
-            </script>
-        
-            <label>Elaborado por</label>
-            <select name="elabora" id="elabora"></select><br><br>
-            <script>
-                llenarSelect("elabora", usuario);
-            </script>
-
-            <label>Departamento</label>
-            <select name="departamento" id="departamento"></select><br><br>
-                <script>
-                    const depart = [
+        const depart = [
+                        "",
                         "ALMACÉN",
                         "ALMACÉN : ALMACEN AUTOSERVICIO",
                         "ALMACÉN : CEDIS",
@@ -223,49 +258,17 @@
                         "VIGILANCIA"
                     ];
 
-                    const selectElement3 = document.getElementById("departamento");
+        const selectElement3 = document.getElementById("departamento");
 
-                    depart.forEach(user => {
-                        const option = document.createElement("option");
-                        option.value = user;
-                        option.textContent = user;
-                        selectElement3.appendChild(option);
-                    });
-                </script>
-            
-            <label>Clase</label>
-            <select name="clase" id="clase">
-                <option value="ATENEA">ATENEA</option>
-                <option value="Colaboración Luis Torres">Colaboración Luis Torres</option>
-                <option value="Colaboración Rosy McMichael">Colaboración Rosy McMichael</option>
-                <option value="DG">DG</option>
-                <option value="Expo CDMX">Expo CDMX</option>
-                <option value="Expo GDL">Expo GDL</option>
-                <option value="MH BEAUTY">MH BEAUTY</option>
-                <option value="Supplies">Supplies</option>
-                <option value="Thue Lashes">Thue Lashes</option>
-                <option value="TRUE MAKEUP">TRUE MAKEUP</option>
-            </select><br><br>
+        depart.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user;
+            option.textContent = user;
+            selectElement3.appendChild(option);
+        });
 
-            <label>Canal de Venta</label>
-            <select name="canalVenta" id="cv">
-                <option value="AUTOSERVICIO">AUTOSERVICIO</option>
-                <option value="ECOMMERCE">ECOMMERCE</option>
-                <option value="MAYOREO">MAYOREO</option>
-                <option value="TELEMARKETING">TELEMARKETING</option>
-            </select><br><br>
-
-            <label>Estado de Aprobación</label>
-            <select name="estadoAprobacion" id="est_aprob">
-                <option value="Pending Approval">Pendiente de Aprobación</option>
-                <option value="Approved">Aprobado</option>
-                <option value="Rejected">Rechasado</option>
-            </select><br><br>
-
-            <label>Código de Impuesto</label>
-            <select name="codigoImpuesto" id="cod_imp"></select><br><br>
-            <script>
-                const codImp = [
+        const codImp = [
+                    "",
                     "ISR:GPO IVA 16% / IVA RETENIDO 16% pgos al extranjero",
                     "ISR:GPO RESICO IVA 0%",
                     "ISR:GPO RET ARRNDAMIENTO INMUEBLES",
@@ -291,19 +294,101 @@
                     "VAT_MX:UNDEF-MX"
                 ];
 
-                const selectElement4 = document.getElementById("cod_imp");
+        const selectElement4 = document.getElementById("cod_imp");
 
-                    codImp.forEach(user => {
+        codImp.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user;
+            option.textContent = user;
+            selectElement4.appendChild(option);
+        });
+
+        const cuenta = [
+                    "",
+                    "601-02-001 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Uniformes",
+                    "601-02-002 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Eventos de capacitación al personal",
+                    "601-02-003 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Traslado de personal",
+                    "601-02-004 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Reclutamiento de personal",
+                    "602-01-000 GASTOS : GASTOS FIJOS : Arrendamiento de inmuebles (PF)",
+                    "602-02-000 GASTOS : GASTOS FIJOS : Arrendamiento de inmuebles (PM)",
+                    "602-03-000 GASTOS : GASTOS FIJOS : Energía eléctrica",
+                    "602-04-000 GASTOS : GASTOS FIJOS : Agua",
+                    "603-01-000 GASTOS : SERVICIOS DE COMUNICACIÓN : Internet",
+                    "603-02-000 GASTOS : SERVICIOS DE COMUNICACIÓN : Celulares",
+                    "603-03-000 GASTOS : SERVICIOS DE COMUNICACIÓN : Teléfono",
+                    "604-01-000 GASTOS : SERVICIOS Y ASESORÍAS : Asesoría Fiscal",
+                    "604-03-000 GASTOS : SERVICIOS Y ASESORÍAS : Suscripciones",
+                    "605-01-000 GASTOS : PAPELERÍA Y ARTÍCULOS DE OFICINA : Papelería y artí­culos de oficina",
+                    "606-01-000 GASTOS : EQUIPO DE COMPUTO Y COMUNICACIÓN : Arrendamiento de Equipo de Computo",
+                    "606-02-000 GASTOS : EQUIPO DE COMPUTO Y COMUNICACIÓN : Mantenimiento de Equipo de Computo",
+                    "608-01-000 GASTOS : EQUIPO DE TRANSPORTE : Arrendamiento de Equipo de Transporte",
+                    "608-02-000 GASTOS : EQUIPO DE TRANSPORTE : Combustibles",
+                    "608-03-000 GASTOS : EQUIPO DE TRANSPORTE : Seguro de Equipo de Transporte",
+                    "608-04-000 GASTOS : EQUIPO DE TRANSPORTE : Mantenimiento de Equipo de Transporte",
+                    "608-05-000 GASTOS : EQUIPO DE TRANSPORTE : Placas",
+                    "608-06-000 GASTOS : EQUIPO DE TRANSPORTE : Tenencia y Refrendo",
+                    "610-01-000 GASTOS : GASTOS DE VENTA : Plataformas di­gitales",
+                    "610-02-000 GASTOS : GASTOS DE VENTA : Comisiones por venta",
+                    "610-04-001 GASTOS : GASTOS DE VENTA : ENVIOS : Mensajería y paquetería",
+                    "610-04-002 GASTOS : GASTOS DE VENTA : ENVIOS : Fletes",
+                    "610-04-003 GASTOS : GASTOS DE VENTA : ENVIOS : Maniobras",
+                    "610-04-004 GASTOS : GASTOS DE VENTA : ENVIOS : Seguro de traslado de mercancías",
+                    "611-01-000 GASTOS : PUBLICIDAD : Manejo de redes sociales",
+                    "611-02-000 GASTOS : PUBLICIDAD : Registro de marcas",
+                    "611-03-000 GASTOS : PUBLICIDAD : Publicidad en Internet",
+                    "611-04-000 GASTOS : PUBLICIDAD : Publicidad Impresa",
+                    "611-05-000 GASTOS : PUBLICIDAD : Lanzamientos de marcas y/o productos",
+                    "611-06-000 GASTOS : PUBLICIDAD : Exhibidores",
+                    "611-07-000 GASTOS : PUBLICIDAD : Stand",
+                    "611-08-000 GASTOS : PUBLICIDAD : Pagina en Internet",
+                    "611-09-000 GASTOS : PUBLICIDAD : Articulos promocionales",
+                    "612-01-000 GASTOS : GASTOS GENERALES : Agua embotellada",
+                    "612-02-000 GASTOS : GASTOS GENERALES : Pastas y café",
+                    "612-03-000 GASTOS : GASTOS GENERALES : Artí­culos de limpieza",
+                    "612-04-000 GASTOS : GASTOS GENERALES : Botiquin",
+                    "612-05-000 GASTOS : GASTOS GENERALES : Recolección de basura",
+                    "612-06-000 GASTOS : GASTOS GENERALES : Fumigaciones",
+                    "612-07-000 GASTOS : GASTOS GENERALES : Consumos de alimentos",
+                    "612-09-000 GASTOS : GASTOS GENERALES : Utensilios varios",
+                    "612-10-000 GASTOS : GASTOS GENERALES : Herramientas",
+                    "613-01-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Alimentos",
+                    "613-02-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Hospedaje",
+                    "613-03-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Gasolina",
+                    "613-04-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Casetas",
+                    "613-05-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Transporte",
+                    "613-06-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Viaticos sin comprobante fiscal",
+                    "614-01-000 GASTOS : SEGURIDAD : Servicio de vigilancia (Alarmas)",
+                    "614-02-000 GASTOS : SEGURIDAD : Extintores",
+                    "614-03-000 GASTOS : SEGURIDAD : Señalización",
+                    "614-04-000 GASTOS : SEGURIDAD : Mtto. equipo de vigilancia",
+                    "614-05-000 GASTOS : SEGURIDAD : Seguridad privada",
+                    "615-01-000 GASTOS : MANTENIMIENTO DE OFICINAS : Mantenimiento de Oficinas",
+                    "616-01-000 GASTOS : GASTOS SIN REQUISITOS FISCALES : Gastos sin requisitos fiscales",
+                    "616-02-000 GASTOS : GASTOS SIN REQUISITOS FISCALES : Multas",
+                    "616-07-000 GASTOS : GASTOS SIN REQUISITOS FISCALES : Consumo en restaurantes (ND)",
+                    "617-02-000 GASTOS : IMPUESTOS Y DERECHOS : Licencia municipal",
+                    "617-03-000 GASTOS : IMPUESTOS Y DERECHOS : Impuesto predial",
+                    "617-04-000 GASTOS : IMPUESTOS Y DERECHOS : Verificación",
+                    "618-01-000 GASTOS : SOFTWARE : NetSuite",
+                    "618-02-000 GASTOS : SOFTWARE : Licencias Microsoft 365",
+                    "618-03-000 GASTOS : SOFTWARE : Codigo de barras",
+                    "618-04-000 GASTOS : SOFTWARE : Programa editor de PDF",
+                    "618-05-000 GASTOS : SOFTWARE : Miadminxml",
+                    "618-06-000 GASTOS : SOFTWARE : Botcenter",
+                    "618-07-000 GASTOS : SOFTWARE : Nomipaq",
+                    "618-08-000 GASTOS : SOFTWARE : Contpaq",
+                    "618-09-000 GASTOS : SOFTWARE : Programa de diseño grafico (Pantone connect)",
+                    "618-10-000 GASTOS : SOFTWARE : Aplicaciones para pagina de Internet"
+                ];
+
+                const selectElement5 = document.getElementById("cuenta");
+
+                    cuenta.forEach(user => {
                         const option = document.createElement("option");
                         option.value = user;
                         option.textContent = user;
-                        selectElement4.appendChild(option);
+                        selectElement5.appendChild(option);
                     });
-            </script>
-
-
-        <button type="submit">Generar CSV</button>
-    </form>
-    
+</script>
 </body>
 </html>
