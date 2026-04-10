@@ -11,22 +11,22 @@
 
     <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
         
-        <input type="file" name="xmlFiles" multiple /><BR></BR>
+        <input type="file" name="xmlFiles" multiple /><br>
 
         <label>ID Externo</label>
-        <input type="text" name="idExterno" placeholder="Ej: 810210" required /><BR></BR>
+        <input type="text" name="idExterno" placeholder="Ej: 810210" required /><br>
         
         <label>Solicita</label>
-            <select name="solicita" id="solicita"></select><br><br>
+            <select name="solicita" id="solicita"></select><br>
 
             <label>Autoriza</label>
-            <select name="autoriza" id="autoriza"></select><br><br>
+            <select name="autoriza" id="autoriza"></select><br>
         
             <label>Elaborado por</label>
-            <select name="elabora" id="elabora"></select><br><br>
+            <select name="elabora" id="elabora"></select><br>
 
             <label>Departamento</label>
-            <select name="departamento" id="departamento"></select><br><br>
+            <select name="departamento" id="departamento"></select><br>
             
             <label>Clase</label>
             <select name="clase" id="clase">
@@ -41,7 +41,7 @@
                 <option value="Supplies">Supplies</option>
                 <option value="Thue Lashes">Thue Lashes</option>
                 <option value="TRUE MAKEUP">TRUE MAKEUP</option>
-            </select><br><br>
+            </select><br>
 
             <label>Canal de Venta</label>
             <select name="canalVenta" id="cv">
@@ -50,7 +50,7 @@
                 <option value="ECOMMERCE">ECOMMERCE</option>
                 <option value="MAYOREO">MAYOREO</option>
                 <option value="TELEMARKETING">TELEMARKETING</option>
-            </select><br><br>
+            </select><br>
 
             <label>Estado de Aprobación</label>
             <select name="estadoAprobacion" id="est_aprob">
@@ -58,13 +58,13 @@
                 <option value="Pending Approval">Pendiente de Aprobación</option>
                 <option value="Approved">Aprobado</option>
                 <option value="Rejected">Rechasado</option>
-            </select><br><br>
+            </select><br>
 
             <label>Código de Impuesto</label>
-            <select name="codigoImpuesto" id="cod_imp"></select><br><br>
+            <select name="codigoImpuesto" id="cod_imp"></select><br>
 
             <label>Cuenta</label>
-            <select name="cuenta" id="cuenta"></select><br><br>
+            <select name="cuenta" id="cuenta"></select><br>
 
         <button type="submit">Generar CSV</button>
     </form>
@@ -381,14 +381,14 @@
                     "618-10-000 GASTOS : SOFTWARE : Aplicaciones para pagina de Internet"
                 ];
 
-                const selectElement5 = document.getElementById("cuenta");
+        const selectElement5 = document.getElementById("cuenta");
 
-                    cuenta.forEach(user => {
-                        const option = document.createElement("option");
-                        option.value = user;
-                        option.textContent = user;
-                        selectElement5.appendChild(option);
-                    });
-</script>
+        cuenta.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user;
+            option.textContent = user;
+            selectElement5.appendChild(option);
+        });
+    </script>
 </body>
 </html>
