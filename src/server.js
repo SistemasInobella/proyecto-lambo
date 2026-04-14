@@ -17,6 +17,7 @@ const manualData = {
   elaboro: "Juan Islas",
   departamento: "TI",
   clase: "Supplies",
+  
   codigoImpuesto: "IVA_MX 16%",
   cuenta: "Cuenta prueba",
   canalVenta: "MAYOREO",
@@ -27,11 +28,24 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
   const results = [];
 
   for (const file of req.files) {
-    const xmlData = fs.readFileSync(file.path, 'utf8');
-    const json = await parser.parseStringPromise(xmlData);
 
-    const transformed = transformData(json, manualData);
-    results.push(...transformed);
+    const baseId = parseInt(req.body.idExterno);
+
+        for (let i = 0; i < req.files.length; i++) {
+        const file = req.files[i];
+
+        const xmlData = fs.readFileSync(file.path, 'utf8');
+        const json = await parser.parseStringPromise(xmlData);
+
+        const idActual = baseId + i;
+
+        const transformed = transformData(json, manualData, idActual);
+
+        results.push(...transformed);
+}
+
+
+    
   }
 
   const fields = Object.keys(results[0] || {});

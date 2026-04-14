@@ -1,4 +1,4 @@
-function transformData(json, manualData) {
+function transformData(json, manualData, idExterno) {
 
 
   const comprobante = json['cfdi:Comprobante'];
@@ -62,7 +62,7 @@ function transformData(json, manualData) {
 
   const lineas = conceptos.map(c => {
     return{
-      idExterno: manualData.idExterno,
+      idExterno: idExterno,
       nºreferencia: uuid,
       proveedor: prov,
       nota: nota,

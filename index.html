@@ -68,6 +68,10 @@
 
         <button type="submit">Generar CSV</button>
     </form>
+
+    <h3>Archivos cargados</h3>
+    <div id="xmlList"></div>
+
     <script>
         const usuario =[
                         "",
@@ -389,6 +393,39 @@
             option.textContent = user;
             selectElement5.appendChild(option);
         });
+
+        const fileInput = document.querySelector('input[name="xmlFiles"]');
+        const xmlList = document.getElementById('xmlList');
+
+        fileInput.addEventListener('change', (e) => {
+            xmlList.innerHTML = ""; //Limpiar Lista
+
+            const files = e .target.files;
+
+            for (let i =0; i < files.length; i++) {
+                crearFilaXML(files[i], i);
+            }
+        });
+
+        function crearFilaXML(file, index) {
+            const row = document.createElement("div");
+            row.style.border = "1px solid #ccc";
+            row.style.padding = "10px";
+            row.style.marginBottom = "5px";
+
+            row.innerHTML = `
+            <strong>${file.name}</strong><br><br>
+
+            <label>Cuenta</label>
+            <select name="cuenta_${index}">
+                ${generarOpcionesCuenta()}
+            </select>
+
+            <br><br>
+
+            <label>
+            `
+        }
     </script>
 </body>
 </html>
