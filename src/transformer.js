@@ -1,4 +1,4 @@
-function transformData(json, manualData, idExterno) {
+function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
 
 
   const comprobante = json['cfdi:Comprobante'];
@@ -9,7 +9,7 @@ function transformData(json, manualData, idExterno) {
   }
 
   const monedaMap = {
-    "MXN": "Peso Mexican",
+    "MXN": "Peso Mexicano",
     "USD": "US Dollar",      //Mapeo de campos
     "EUR": "Euro"
   };
@@ -61,7 +61,8 @@ function transformData(json, manualData, idExterno) {
   }
 
   const lineas = conceptos.map(c => {
-    return{
+    return cuentasSeleccionadas.map(cuenta => ({
+
       idExterno: idExterno,
       nºreferencia: uuid,
       proveedor: prov,
@@ -80,11 +81,11 @@ function transformData(json, manualData, idExterno) {
       metodoPago: metodoPagoMap[metodoPago] || metodoPago,
       fechaEmision: fecha,
       uuidReceived: uuid,
-      cuenta: manualData.cuenta,
+      cuenta: cuenta,
       canalVenta: manualData.canalVenta,
       estado: manualData.estadoAprobacion
-    };
-  });
+  }));
+}).flat();
 
 return lineas;
 }

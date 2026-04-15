@@ -64,13 +64,19 @@
             <select name="codigoImpuesto" id="cod_imp"></select><br>
 
             <label>Cuenta</label>
-            <select name="cuenta" id="cuenta"></select><br>
+            <select name="cuenta" required id="cuenta"></select><br>
 
         <button type="submit">Generar CSV</button>
     </form>
 
     <h3>Archivos cargados</h3>
     <div id="xmlList"></div>
+
+    <label>Modo:</label>
+    <select name="modo" id="modo">
+        <option value="general">General</option>
+        <option value="multi">Multicuentas</option>
+    </select>
 
     <script>
         const usuario =[
@@ -424,7 +430,27 @@
             <br><br>
 
             <label>
-            `
+                <input type="checkbox" onchange="toggleSegundaCuenta(this, ${index})">
+                Agregar segunda cuenta
+            </label>
+
+            <div id="extra_${index}" style="display:none; margin-top:10px;">
+                <label>Cuenta 2:</label>
+                <select name="cuenta2_${index}">
+                    ${generarOpcionesCuenta()}
+                </select>
+            </div>
+            `;
+            xmlList.appendChild(row);
+        }
+
+        function generarOpcionesCuenta() {
+            return cuenta.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        function toggleSegundaCuenta(checkbox, index) {
+            const extra = document.getElementById(`extra_${index}`);
+            extra.style.display = checkbox.checked ? "block" : "none";
         }
     </script>
 </body>

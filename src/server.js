@@ -10,6 +10,8 @@ const upload = multer({ dest: 'uploads/' });
 
 const parser = new xml2js.Parser();
 
+
+
 const manualData = {
   idExterno: "810210",
   solicita: "Juan Islas",
@@ -25,28 +27,45 @@ const manualData = {
 };
 
 app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
+  const modo = req.body.modo;
   const results = [];
 
-  for (const file of req.files) {
+ 
 
     const baseId = parseInt(req.body.idExterno);
 
-        for (let i = 0; i < req.files.length; i++) {
-        const file = req.files[i];
+    for (let i = 0; i < req.files.length; i++) {
 
-        const xmlData = fs.readFileSync(file.path, 'utf8');
-        const json = await parser.parseStringPromise(xmlData);
+      const file = req.files[i];
 
-        const idActual = baseId + i;
+      const xmlData = fs.readFileSync(file.path, 'utf8');
+      const json = await parser.parseStringPromise(xmlData);
 
-        const transformed = transformData(json, manualData, idActual);
+      const idActual = baseId + i;
 
-        results.push(...transformed);
+      let cuentasSeleccionadas = [];
+
+      if (modo === "multi") {
+        const cuenta1 = req.body[`cuenta_${i}`];
+        const cuenta2 = req.body[`cuenta2_${i}`];
+
+        cuentasSeleccionadas.push(cuenta1);
+
+        if (cuenta2) {
+          cuentasSeleccionadas.push(cuenta2);
+        }
+
+      } else {
+        cuentasSeleccionadas.push(req.body.cuenta); // modo general
+      }
+
+      const transformed = transformData(json, manualData, idActual, cuentasSeleccionadas);
+
+      results.push(...transformed);
+
+      fs.unlinkSync(file.path);
 }
-
-
     
-  }
 
   const fields = Object.keys(results[0] || {});
   const json2csv = new Parser({ fields });

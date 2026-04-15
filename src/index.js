@@ -8,18 +8,16 @@ const parser = new xml2js.Parser();
 
 //campos Manuales
 const manualData = {
-  idExterno: "810210",
-  //proveedor: "GONTELLE",
-  solicita: "Juan islas",
-  autoriza: "Juan Islas",
-  elaboro: "Juan Islas",
-  departamento: "TI",
-  clase: "Supplies",
-  codigoImpuesto: "IVA_MX 16%:IVA16%",
-  cuenta: "613-02-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Hospedaje",
-  canalVenta: "MAYOREO",
-  estadoAprobacion: "Aprobado"
-}
+  solicita: req.body.solicita,
+  autoriza: req.body.autoriza,
+  elaboro: req.body.elabora,
+  departamento: req.body.departamento,
+  clase: req.body.clase,
+  codigoImpuesto: req.body.codigoImpuesto,
+  cuenta: req.body.cuenta,
+  canalVenta: req.body.canalVenta,
+  estadoAprobacion: req.body.estadoAprobacion
+};
 
 async function main() {
   const folderPath = './input_xml';
