@@ -13,17 +13,15 @@ const parser = new xml2js.Parser();
 
 
 const manualData = {
-  idExterno: "810210",
-  solicita: "Juan Islas",
-  autoriza: "Juan Islas",
-  elaboro: "Juan Islas",
-  departamento: "TI",
-  clase: "Supplies",
-  
-  codigoImpuesto: "IVA_MX 16%",
-  cuenta: "Cuenta prueba",
-  canalVenta: "MAYOREO",
-  estadoAprobacion: "Aprobado"
+  solicita: req.body.solicita,
+  autoriza: req.body.autoriza,
+  elaboro: req.body.elabora,
+  departamento: req.body.departamento,
+  clase: req.body.clase,
+  codigoImpuesto: req.body.codigoImpuesto,
+  cuenta: req.body.cuenta,
+  canalVenta: req.body.canalVenta,
+  estadoAprobacion: req.body.estadoAprobacion
 };
 
 app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
