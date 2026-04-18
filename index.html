@@ -422,25 +422,33 @@
             row.innerHTML = `
             <strong>${file.name}</strong><br><br>
 
-            <label>Cuenta</label>
+            <label>Cuenta 1:</label>
             <select name="cuenta_${index}">
                 ${generarOpcionesCuenta()}
             </select>
+
+            <label>Monto:</label>
+            <input type="number" name="monto_${index}" step="0.01" />
 
             <br><br>
 
             <label>
                 <input type="checkbox" onchange="toggleSegundaCuenta(this, ${index})">
-                Agregar segunda cuenta
+                Segunda cuenta
             </label>
 
             <div id="extra_${index}" style="display:none; margin-top:10px;">
+                
                 <label>Cuenta 2:</label>
                 <select name="cuenta2_${index}">
-                    ${generarOpcionesCuenta()}
+                ${generarOpcionesCuenta()}
                 </select>
+
+                <label>Monto:</label>
+                <input type="number" name="monto2_${index}" step="0.01" />
+
             </div>
-            `;
+        `;
             xmlList.appendChild(row);
         }
 
@@ -452,6 +460,47 @@
             const extra = document.getElementById(`extra_${index}`);
             extra.style.display = checkbox.checked ? "block" : "none";
         }
+
+        document.getElementById("modo").addEventListener("change", (e) => {
+            const modo = e.target.value;
+
+            const cuentaGeneral = document.querySelector('select[name="cuenta"]');
+            const xmlList = document.getElementById("xmlList");
+
+            if (modo === "multi") {
+                cuentaGeneral.disabled = true;
+                xmlList.style.display = "block";
+            } else {
+                cuentaGeneral.disabled = false;
+                xmlList.stile.display = "none";
+            }
+        });
+
+        
+
+        let cuentasSeleccionadas = [];
+
+        if (modo === "multi") {
+
+            const cuenta1 = req.body[`cuenta_${i}`];
+            const monto1 = parseFloat(req.body[`monto_${i}`]) || 0;
+
+            const cuenta2 = req.body[`cuenta2_${i}`];
+            const monto2 = parseFloat(req.body[`monto2_${i}`]) || 0;
+
+        cuentasSeleccionadas.push({ cuenta: cuenta1, monto: monto1 });
+
+        if (cuenta2) {
+            cuentasSeleccionadas.push({ cuenta: cuenta2, monto: monto2 });
+        }
+
+        } else {
+
+            cuentasSeleccionadas.push({
+                cuenta: req.body.cuenta,
+                monto: null
+        });
+}
     </script>
 </body>
 </html>

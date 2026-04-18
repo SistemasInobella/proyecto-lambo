@@ -61,8 +61,16 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
   }
 
   const lineas = conceptos.map(c => {
-    return cuentasSeleccionadas.map(cuenta => ({
 
+  return cuentasSeleccionadas.map(cuentaObj => {
+
+    let importeFinal = c['$'].Importe;
+
+    if (cuentaObj.monto) {
+      importeFinal = cuentaObj.monto;
+    }
+
+    return {
       idExterno: idExterno,
       nºreferencia: uuid,
       proveedor: prov,
@@ -81,10 +89,13 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
       metodoPago: metodoPagoMap[metodoPago] || metodoPago,
       fechaEmision: fecha,
       uuidReceived: uuid,
-      cuenta: cuenta,
+      cuenta: cuentaObj.cuenta,
       canalVenta: manualData.canalVenta,
       estado: manualData.estadoAprobacion
-  }));
+    };
+
+  });
+
 }).flat();
 
 return lineas;

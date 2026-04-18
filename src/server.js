@@ -10,9 +10,11 @@ const upload = multer({ dest: 'uploads/' });
 
 const parser = new xml2js.Parser();
 
-
-
-const manualData = {
+app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
+  const modo = req.body.modo;
+  const results = [];
+  
+  const manualData = {
   solicita: req.body.solicita,
   autoriza: req.body.autoriza,
   elaboro: req.body.elabora,
@@ -23,12 +25,6 @@ const manualData = {
   canalVenta: req.body.canalVenta,
   estadoAprobacion: req.body.estadoAprobacion
 };
-
-app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
-  const modo = req.body.modo;
-  const results = [];
-
- 
 
     const baseId = parseInt(req.body.idExterno);
 
