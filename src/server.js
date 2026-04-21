@@ -39,19 +39,36 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
 
       let cuentasSeleccionadas = [];
 
-      if (modo === "multi") {
-        const cuenta1 = req.body[`cuenta_${i}`];
-        const cuenta2 = req.body[`cuenta2_${i}`];
+     if (modo === "multi") {
 
-        cuentasSeleccionadas.push(cuenta1);
+      const cuenta1 = req.body[`cuenta_${i}`];
+      const monto1 = parseFloat(req.body[`monto_${i}`]) || null;
 
-        if (cuenta2) {
-          cuentasSeleccionadas.push(cuenta2);
-        }
+      const cuenta2 = req.body[`cuenta2_${i}`];
+      const monto2 = parseFloat(req.body[`monto2_${i}`]) || null;
 
-      } else {
-        cuentasSeleccionadas.push(req.body.cuenta); // modo general
+      if (cuenta1 && cuenta1.trim() !== "") {
+        cuentasSeleccionadas.push({
+          cuenta: cuenta1,
+          monto: monto1
+        });
       }
+
+      if (cuenta2 && cuenta2.trim() !== "") {
+        cuentasSeleccionadas.push({
+          cuenta: cuenta2,
+          monto: monto2
+        });
+      }
+
+    } else {
+
+      cuentasSeleccionadas.push({
+        cuenta: req.body.cuenta,
+        monto: null
+      });
+
+}
 
       const transformed = transformData(json, manualData, idActual, cuentasSeleccionadas);
 
@@ -59,8 +76,6 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
 
       fs.unlinkSync(file.path);
 }
-    
-
   const fields = Object.keys(results[0] || {});
   const json2csv = new Parser({ fields });
   const csv = json2csv.parse(results);

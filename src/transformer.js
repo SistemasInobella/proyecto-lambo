@@ -66,9 +66,9 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
 
     let importeFinal = c['$'].Importe;
 
-    if (cuentaObj.monto) {
+    if (cuentaObj.monto !== null && cuentaObj.monto !== undefined) {
       importeFinal = cuentaObj.monto;
-    }
+      }
 
     return {
       idExterno: idExterno,

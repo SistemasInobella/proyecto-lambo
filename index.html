@@ -66,17 +66,19 @@
             <label>Cuenta</label>
             <select name="cuenta" required id="cuenta"></select><br>
 
+            <label>Modo:</label>
+            <select name="modo" id="modo">
+                <option value="general">General</option>
+                <option value="multi">Multicuentas</option>
+            </select>
+
         <button type="submit">Generar CSV</button>
     </form>
 
     <h3>Archivos cargados</h3>
     <div id="xmlList"></div>
 
-    <label>Modo:</label>
-    <select name="modo" id="modo">
-        <option value="general">General</option>
-        <option value="multi">Multicuentas</option>
-    </select>
+    
 
     <script>
         const usuario =[
@@ -472,35 +474,11 @@
                 xmlList.style.display = "block";
             } else {
                 cuentaGeneral.disabled = false;
-                xmlList.stile.display = "none";
+                xmlList.style.display = "none";
             }
         });
 
         
-
-        let cuentasSeleccionadas = [];
-
-        if (modo === "multi") {
-
-            const cuenta1 = req.body[`cuenta_${i}`];
-            const monto1 = parseFloat(req.body[`monto_${i}`]) || 0;
-
-            const cuenta2 = req.body[`cuenta2_${i}`];
-            const monto2 = parseFloat(req.body[`monto2_${i}`]) || 0;
-
-        cuentasSeleccionadas.push({ cuenta: cuenta1, monto: monto1 });
-
-        if (cuenta2) {
-            cuentasSeleccionadas.push({ cuenta: cuenta2, monto: monto2 });
-        }
-
-        } else {
-
-            cuentasSeleccionadas.push({
-                cuenta: req.body.cuenta,
-                monto: null
-        });
-}
     </script>
 </body>
 </html>
