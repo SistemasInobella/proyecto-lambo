@@ -81,7 +81,7 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
       autoriza: manualData.autoriza,
       elaboro: manualData.elaboro,
       descripcion: c['$'].Descripcion || "Sin Descripcion",
-      tarifa: c['$'].Importe,
+      tarifa: Number(importeFinal).toFixed(2),
       departamento: manualData.departamento,
       clase: manualData.clase,
       codigoImpuesto: manualData.codigoImpuesto,

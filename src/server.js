@@ -41,11 +41,11 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
 
      if (modo === "multi") {
 
-      const cuenta1 = req.body[`cuenta_${i}`];
-      const monto1 = parseFloat(req.body[`monto_${i}`]) || null;
+      const monto1Raw = req.body[`monto_${i}`];
+      const monto2Raw = req.body[`monto2_${i}`];
 
-      const cuenta2 = req.body[`cuenta2_${i}`];
-      const monto2 = parseFloat(req.body[`monto2_${i}`]) || null;
+      const monto1 = monto1Raw !== "" ? parseFloat(monto1Raw) : null;
+      const monto2 = monto2Raw !== "" ? parseFloat(monto2Raw) : null;
 
       if (cuenta1 && cuenta1.trim() !== "") {
         cuentasSeleccionadas.push({
@@ -70,6 +70,16 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
 
 }
 
+    if (cuentasSeleccionadas.length === 0) {
+    cuentasSeleccionadas.push({
+      cuenta: req.body.cuenta,
+      monto: null
+    });
+  }
+
+      console.log("Modo:", modo);
+      console.log("Body:", req.body);
+      console.log("Cuentas:", cuentasSeleccionadas);
       const transformed = transformData(json, manualData, idActual, cuentasSeleccionadas);
 
       results.push(...transformed);
