@@ -28,6 +28,10 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
 
     const baseId = parseInt(req.body.idExterno);
 
+    if (isNaN(baseId)) {
+      return res.status(400).send("ID Externo debe ser numérico");
+    }
+
     for (let i = 0; i < req.files.length; i++) {
 
       const file = req.files[i];
@@ -39,13 +43,23 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
 
       let cuentasSeleccionadas = [];
 
+
      if (modo === "multi") {
+      const cuenta1 = req.body[`cuenta_${i}`];
+      const cuenta2 = req.body[`cuenta2_${i}`];
 
       const monto1Raw = req.body[`monto_${i}`];
       const monto2Raw = req.body[`monto2_${i}`];
 
-      const monto1 = monto1Raw !== "" ? parseFloat(monto1Raw) : null;
-      const monto2 = monto2Raw !== "" ? parseFloat(monto2Raw) : null;
+      const monto1 = monto1Raw ? parseFloat(monto1Raw) : null;
+      const monto2 = monto2Raw ? parseFloat(monto2Raw) : null;
+
+      console.log("CUENTA1:", cuenta1);
+      console.log("MONTO1:", monto1);
+      console.log("CUENTA2:", cuenta2);
+      console.log("MONTO2:", monto2);
+      console.log("FINAL:", cuentasSeleccionadas);
+      console.log("CUENTAS:", cuentasSeleccionadas)
 
       if (cuenta1 && cuenta1.trim() !== "") {
         cuentasSeleccionadas.push({

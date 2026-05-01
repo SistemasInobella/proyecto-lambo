@@ -7,29 +7,46 @@
 </head>
 <body>
 
-    <h2>Subir XMLs</h2>
+    <div class="app">
 
-    <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
-        
-        <input type="file" name="xmlFiles" multiple /><br>
+        <div class="card">
 
-        <label>ID Externo</label>
-        <input type="text" name="idExterno" placeholder="Ej: 810210" required /><br>
+            <h1 class="title">Carga Masiva XML</h1>
+
+
+    <form id="formXML" action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
         
-        <label>Solicita</label>
-            <select name="solicita" id="solicita"></select><br>
+        
+        <div class="form-section">
+            <label>Subir XMLs</label>
+            <input type="file" name="xmlFiles" multiple class="input"/>
+
+            <label>ID Externo</label>
+            <input type="text" name="idExterno" class="input" placeholder="Ej: 810210" step="1" min="0" required />
+        </div>
+
+        <div class="form-section">
+            <label>Solicita</label>
+            <select name="solicita" id="solicita" class="input"></select>
 
             <label>Autoriza</label>
-            <select name="autoriza" id="autoriza"></select><br>
+            <select name="autoriza" id="autoriza" class="input"></select>
         
             <label>Elaborado por</label>
-            <select name="elabora" id="elabora"></select><br>
+            <select name="elabora" id="elabora" class="input">
+                <option value=""></option>
+                <option value="MARIA LIZETH TELLES MARTINEZ">Maria Lizeth Telles</option>
+                <option value="JOSE FERNANDO ALVAREZ ZAPATA">Jose Fernando Álvarez</option>
+                <option value="BERENICE RODRIGUEZ">Berenice Rodriguez solís</option>
+            </select>
+        </div>
 
-            <label>Departamento</label>
-            <select name="departamento" id="departamento"></select><br>
+        <div>
+            <label class="form-section">Departamento</label>
+            <select name="departamento" id="departamento" class="input"></select>
             
             <label>Clase</label>
-            <select name="clase" id="clase">
+            <select name="clase" id="clase" class="input">
                 <option value=""></option>
                 <option value="ATENEA">ATENEA</option>
                 <option value="Colaboración Luis Torres">Colaboración Luis Torres</option>
@@ -41,46 +58,51 @@
                 <option value="Supplies">Supplies</option>
                 <option value="Thue Lashes">Thue Lashes</option>
                 <option value="TRUE MAKEUP">TRUE MAKEUP</option>
-            </select><br>
+            </select>
 
             <label>Canal de Venta</label>
-            <select name="canalVenta" id="cv">
+            <select name="canalVenta" id="cv" class="input">
                 <option value=""></option>
                 <option value="AUTOSERVICIO">AUTOSERVICIO</option>
                 <option value="ECOMMERCE">ECOMMERCE</option>
                 <option value="MAYOREO">MAYOREO</option>
                 <option value="TELEMARKETING">TELEMARKETING</option>
-            </select><br>
+            </select>
 
             <label>Estado de Aprobación</label>
-            <select name="estadoAprobacion" id="est_aprob">
+            <select name="estadoAprobacion" id="est_aprob" class="input">
                 <option value=""></option>
                 <option value="Pending Approval">Pendiente de Aprobación</option>
                 <option value="Approved">Aprobado</option>
                 <option value="Rejected">Rechasado</option>
-            </select><br>
+            </select>
+        </div>
 
+        <div class="form-section">
             <label>Código de Impuesto</label>
-            <select name="codigoImpuesto" id="cod_imp"></select><br>
+            <select name="codigoImpuesto" id="cod_imp" class="input"></select>
 
             <label>Cuenta</label>
-            <select name="cuenta" required id="cuenta"></select><br>
+            <select name="cuenta" required id="cuenta" class="input" required></select>
+        </div>
 
+        <div class="form-section">
             <label>Modo:</label>
-            <select name="modo" id="modo">
+            <select name="modo" id="modo" class="input">
                 <option value="general">General</option>
                 <option value="multi">Multicuentas</option>
             </select>
+        </div>
 
+        <div class="form-section">
              <h3>Archivos cargados</h3>
-             <div id="xmlList"></div>
+             <div id="xmlList" class="xml-container"></div>
+        </div>
 
-             <button type="submit">Generar CSV</button>
+             <button type="submit" class="btn-primary">Generar CSV</button>
     </form>
 
    
-
-    
 
     <script>
         const usuario =[
@@ -236,7 +258,6 @@
 
         llenarSelect("solicita", usuario);
         llenarSelect("autoriza", usuario);
-        llenarSelect("elabora", usuario);
 
         const depart = [
                         "",
@@ -432,7 +453,7 @@
             </select>
 
             <label>Monto:</label>
-            <input type="number" name="monto_${index}" step="0.01" />
+            <input type="number" name="monto_${index}" step="0.01" min="0" />
 
             <br><br>
 
@@ -449,7 +470,7 @@
                 </select>
 
                 <label>Monto:</label>
-                <input type="number" name="monto2_${index}" step="0.01" />
+                <input type="number" name="monto2_${index}" step="0.01" min="0" />
 
             </div>
         `;
@@ -478,6 +499,15 @@
                 cuentaGeneral.disabled = false;
                 xmlList.style.display = "none";
             }
+
+            document.getElementById("formXML").addEventListener("submit", function() {
+                setTimeout(() => {
+                    this.reset(); //Limpiar Campos
+
+                    //Limpiar archivos XML
+                    document.getElementById("xmlList").innerHTML = "";
+                }, 1000); //Esperar a que descargue
+            })
         });
 
         

@@ -55,22 +55,26 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
   const nota = `${serie}${folio}` //Preguntar que diferencia tienen estos const
 
   const conceptos = comprobante['cfdi:Conceptos'][0]['cfdi:Concepto'];
+
+  const descripcion = conceptos && conceptos.length > 0
+    ? conceptos[0]['$'].Descripcion
+    : "Sin Descripcion";
 //Error en el caso de que el XML no contenga conceptos
   if (!conceptos) {
     throw new Error('XML sin conceptos');
   }
 
-  const lineas = conceptos.map(c => {
+const totalXML = parseFloat(comprobante['$'].SubTotal);
 
-  return cuentasSeleccionadas.map(cuentaObj => {
+return cuentasSeleccionadas.map(cuentaObj => {
 
-    let importeFinal = c['$'].Importe;
+  let importeFinal = totalXML;
 
-    if (cuentaObj.monto !== null && cuentaObj.monto !== undefined) {
-      importeFinal = cuentaObj.monto;
-      }
+  if (cuentaObj.monto !== null && cuentaObj.monto !== undefined) {
+    importeFinal = cuentaObj.monto;
+  }
 
-    return {
+  return {
       idExterno: idExterno,
       nºreferencia: uuid,
       proveedor: prov,
@@ -80,7 +84,7 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
       solicita: manualData.solicita,
       autoriza: manualData.autoriza,
       elaboro: manualData.elaboro,
-      descripcion: c['$'].Descripcion || "Sin Descripcion",
+      descripcion: descripcion,
       tarifa: Number(importeFinal).toFixed(2),
       departamento: manualData.departamento,
       clase: manualData.clase,
@@ -92,13 +96,10 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
       cuenta: cuentaObj.cuenta,
       canalVenta: manualData.canalVenta,
       estado: manualData.estadoAprobacion
-    };
+  };
 
-  });
+});
 
-}).flat();
-
-return lineas;
 }
 
 module.exports = { transformData };
