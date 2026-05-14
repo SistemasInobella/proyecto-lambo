@@ -29,7 +29,7 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
 
   const metodoPagoMap = {
     "PPD": "PPD Pago en parcialidades o diferido",
-    "PUE": "PUE Pago en una sola exhibición"   //Mapeo de campos
+    "PUE": "PUE Pago en una sola exhibicion"   //Mapeo de campos
   }
 
   //Extraccion del UUID
@@ -52,7 +52,9 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
   const serie = comprobante['$'].Serie || "";
   const folio = comprobante['$'].Folio || ""; 
 
-  const nota = `${serie}${folio}` //Preguntar que diferencia tienen estos const
+  const nota = [serie, folio]
+  .filter(Boolean)
+  .join("-"); //Preguntar que diferencia tienen estos const
 
   const conceptos = comprobante['cfdi:Conceptos'][0]['cfdi:Concepto'];
 

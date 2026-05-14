@@ -104,10 +104,10 @@ app.post('/upload', upload.array('xmlFiles'), async (req, res) => {
   const json2csv = new Parser({ fields });
   const csv = json2csv.parse(results);
 
-  res.header('Content-Type', 'text/csv');
+  res.header('Content-Type', 'text/csv; charset=latin1');
   res.attachment('resultado.csv');
-  res.send('\uFEFF' + csv);
-});
+  res.send(Buffer.from(csv, 'latin1'));
+  });
 
 app.listen(3000, () => {
   console.log('Servidor corriendo en http://localhost:3000');
