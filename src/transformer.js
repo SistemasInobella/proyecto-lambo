@@ -29,7 +29,7 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
 
   const metodoPagoMap = {
     "PPD": "PPD Pago en parcialidades o diferido",
-    "PUE": "PUE Pago en una sola exhibicion"   //Mapeo de campos
+    "PUE": "PUE Pago en una sola exhibición"   //Mapeo de campos
   }
 
   //Extraccion del UUID
