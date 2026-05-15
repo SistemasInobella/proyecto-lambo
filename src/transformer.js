@@ -42,7 +42,16 @@ function transformData(json, manualData, idExterno,cuentasSeleccionadas) {
 
  //Extraccion de campos del XML
   const fechaRaw = comprobante['$'].Fecha;
-  const fecha = fechaRaw.split('T')[0];
+  const fechaISO = fechaRaw.split('T')[0];
+  const [anio, mes, dia] = fechaISO.split('-');
+  const fecha = `${dia}/${mes}/${anio}`.trim();
+  const hoy = new Date();
+
+  const diaHoy = String(hoy.getDate()).padStart(2, '0');
+  const mesHoy = String(hoy.getMonth() + 1).padStart(2, '0');
+  const anioHoy = hoy.getFullYear();
+
+  const fechaActual = `${diaHoy}/${mesHoy}/${anioHoy}`;
   const moneda = comprobante['$'].Moneda;
   const formaPago = comprobante['$'].FormaPago;
   const metodoPago = comprobante['$'].MetodoPago;
@@ -82,7 +91,7 @@ return cuentasSeleccionadas.map(cuentaObj => {
       proveedor: prov,
       nota: nota,
       moneda: monedaMap[moneda] || moneda,
-      fecha: fecha,
+      fecha: fechaActual,
       solicita: manualData.solicita,
       autoriza: manualData.autoriza,
       elaboro: manualData.elaboro,
