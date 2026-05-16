@@ -19,7 +19,7 @@
         
         <div class="form-section">
             <label>Subir XMLs</label>
-            <input type="file" name="xmlFiles" multiple class="input"/>
+            <input type="file" name="xmlFiles" multiple class="input" required/>
 
             <label>ID Externo</label>
             <input type="text" name="idExterno" class="input" placeholder="Ej: 810210" step="1" min="0" required />
@@ -27,13 +27,13 @@
 
         <div class="form-section">
             <label>Solicita</label>
-            <select name="solicita" id="solicita" class="input"></select>
+            <select name="solicita" id="solicita" class="input" required></select>
 
             <label>Autoriza</label>
-            <select name="autoriza" id="autoriza" class="input"></select>
+            <select name="autoriza" id="autoriza" class="input" required></select>
         
             <label>Elaborado por</label>
-            <select name="elabora" id="elabora" class="input">
+            <select name="elabora" id="elabora" class="input" required>
                 <option value=""></option>
                 <option value="MARIA LIZETH TELLES MARTINEZ">Maria Lizeth Telles</option>
                 <option value="JOSE FERNANDO ALVAREZ ZAPATA">Jose Fernando Álvarez</option>
@@ -43,10 +43,10 @@
 
         <div>
             <label class="form-section">Departamento</label>
-            <select name="departamento" id="departamento" class="input"></select>
+            <select name="departamento" id="departamento" class="input" required></select>
             
             <label>Clase</label>
-            <select name="clase" id="clase" class="input">
+            <select name="clase" id="clase" class="input" required>
                 <option value=""></option>
                 <option value="ATENEA">ATENEA</option>
                 <option value="Colaboración Luis Torres">Colaboración Luis Torres</option>
@@ -61,7 +61,7 @@
             </select>
 
             <label>Canal de Venta</label>
-            <select name="canalVenta" id="cv" class="input">
+            <select name="canalVenta" id="cv" class="input" required>
                 <option value=""></option>
                 <option value="AUTOSERVICIO">AUTOSERVICIO</option>
                 <option value="ECOMMERCE">ECOMMERCE</option>
@@ -70,7 +70,7 @@
             </select>
 
             <label>Estado de Aprobación</label>
-            <select name="estadoAprobacion" id="est_aprob" class="input">
+            <select name="estadoAprobacion" id="est_aprob" class="input" required>
                 <option value=""></option>
                 <option>Pendiente de Aprobación</option>
                 <option>Aprobado</option>
@@ -80,7 +80,7 @@
 
         <div class="form-section">
             <label>Código de Impuesto</label>
-            <select name="codigoImpuesto" id="cod_imp" class="input"></select>
+            <select name="codigoImpuesto" id="cod_imp" class="input" required></select>
 
             <label>Cuenta</label>
             <select name="cuenta" required id="cuenta" class="input" required></select>
@@ -94,9 +94,17 @@
             </select>
         </div>
 
-        <div class="form-section">
-             <h3>Archivos cargados</h3>
-             <div id="xmlList" class="xml-container"></div>
+        <div
+            class="form-section"
+            id="xmlSection"
+            style="display:none;"
+        >
+            <h3>Archivos cargados</h3>
+
+            <div
+                id="xmlList"
+                class="xml-container"
+            ></div>
         </div>
 
              <button type="submit" class="btn-primary">Generar CSV</button>
@@ -445,35 +453,54 @@
             row.style.marginBottom = "5px";
 
             row.innerHTML = `
-            <strong>${file.name}</strong><br><br>
+                <strong>${file.name}</strong>
+                <br><br>
 
-            <label>Cuenta 1:</label>
-            <select name="cuenta_${index}">
-                ${generarOpcionesCuenta()}
-            </select>
-
-            <label>Monto:</label>
-            <input type="number" name="monto_${index}" step="0.01" min="0" />
-
-            <br><br>
-
-            <label>
-                <input type="checkbox" onchange="toggleSegundaCuenta(this, ${index})">
-                Segunda cuenta
-            </label>
-
-            <div id="extra_${index}" style="display:none; margin-top:10px;">
-                
-                <label>Cuenta 2:</label>
-                <select name="cuenta2_${index}">
-                ${generarOpcionesCuenta()}
+                <label>Cuenta 1:</label>
+                <select name="cuenta_${index}">
+                    ${generarOpcionesCuenta()}
                 </select>
 
-                <label>Monto:</label>
-                <input type="number" name="monto2_${index}" step="0.01" min="0" />
+                <div id="monto1_${index}"
+                    style="display:none; margin-top:10px;">
 
-            </div>
-        `;
+                    <label>Monto Cuenta 1:</label>
+                    <input
+                        type="number"
+                        name="monto_${index}"
+                        step="0.01"
+                        min="0"
+                    />
+                </div>
+
+                <br><br>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        onchange="toggleSegundaCuenta(this, ${index})"
+                    >
+                    Segunda cuenta
+                </label>
+
+                <div id="extra_${index}"
+                    style="display:none; margin-top:10px;">
+
+                    <label>Cuenta 2:</label>
+                    <select name="cuenta2_${index}">
+                        ${generarOpcionesCuenta()}
+                    </select>
+
+                    <label>Monto Cuenta 2:</label>
+                    <input
+                        type="number"
+                        name="monto2_${index}"
+                        step="0.01"
+                        min="0"
+                    />
+
+                </div>
+            `;
             xmlList.appendChild(row);
         }
 
@@ -482,32 +509,60 @@
         }
 
         function toggleSegundaCuenta(checkbox, index) {
-            const extra = document.getElementById(`extra_${index}`);
-            extra.style.display = checkbox.checked ? "block" : "none";
+
+            const extra =
+            document.getElementById(`extra_${index}`);
+
+            const monto1 =
+            document.getElementById(`monto1_${index}`);
+
+            if (checkbox.checked) {
+
+                extra.style.display = "block";
+                monto1.style.display = "block";
+
+            } else {
+
+                extra.style.display = "none";
+                monto1.style.display = "none";
+
+                document.querySelector(
+                    `input[name="monto_${index}"]`
+                ).value = "";
+
+                document.querySelector(
+                    `input[name="monto2_${index}"]`
+                ).value = "";
+
+            }
         }
 
-        document.getElementById("modo").addEventListener("change", (e) => {
+        document.getElementById("modo")
+        .addEventListener("change", (e) => {
+
             const modo = e.target.value;
 
-            const cuentaGeneral = document.querySelector('select[name="cuenta"]');
-            const xmlList = document.getElementById("xmlList");
+            const cuentaGeneral =
+            document.querySelector(
+                'select[name="cuenta"]'
+            );
+
+            const xmlSection =
+            document.getElementById("xmlSection");
 
             if (modo === "multi") {
+
                 cuentaGeneral.disabled = true;
-                xmlList.style.display = "block";
+
+                xmlSection.style.display = "block";
+
             } else {
+
                 cuentaGeneral.disabled = false;
-                xmlList.style.display = "none";
+
+                xmlSection.style.display = "none";
+
             }
-
-            document.getElementById("formXML").addEventListener("submit", function() {
-                setTimeout(() => {
-                    this.reset(); //Limpiar Campos
-
-                    //Limpiar archivos XML
-                    document.getElementById("xmlList").innerHTML = "";
-                }, 1000); //Esperar a que descargue
-            })
         });
 
         
