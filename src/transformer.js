@@ -91,7 +91,7 @@ return cuentasSeleccionadas.map(cuentaObj => {
       proveedor: prov,
       nota: nota,
       moneda: monedaMap[moneda] || moneda,
-      fecha: fechaActual,
+      fecha: fecha,
       solicita: manualData.solicita,
       autoriza: manualData.autoriza,
       elaboro: manualData.elaboro,
@@ -106,7 +106,8 @@ return cuentasSeleccionadas.map(cuentaObj => {
       uuidReceived: uuid,
       cuenta: cuentaObj.cuenta,
       canalVenta: manualData.canalVenta,
-      estado: manualData.estadoAprobacion
+      estado: manualData.estadoAprobacion,
+      fechaImpresion: fechaActual
   };
 
 });

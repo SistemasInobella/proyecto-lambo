@@ -23,7 +23,8 @@ function generateCSV(data) {
     'uuidReceived',
     'cuenta',
     'canalVenta',
-    'estado'
+    'estado',
+    'fechaImpresion'
   ];
 
   const parser = new Parser({ fields });
