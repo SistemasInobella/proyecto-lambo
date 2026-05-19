@@ -1,0 +1,58 @@
+/* Reset basico */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Contenedor principal */
+.app{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Tarjeta principal */
+.card{
+    background: white;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 16px;
+    padding: 40;
+    box-shadow: 0 8px 25px rgb(0,0,0,0,0.08);
+}
+
+/* Titulo */
+.title{
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #1f2937;
+}
+
+/*Secciones*/
+.form-section{
+    margin-bottom: 25px;
+}
+
+/* labels */
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #374151;
+
+}
+
+/* Inputs y Selects */
+.input,
+select
+input[type="text"],

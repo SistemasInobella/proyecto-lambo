@@ -6,6 +6,8 @@ const { transformData } = require('./transformer');
 const { Parser } = require('json2csv');
 
 const app = express();
+app.use(express.static('public'));
+
 const upload = multer({ dest: 'uploads/' });
 
 const parser = new xml2js.Parser();

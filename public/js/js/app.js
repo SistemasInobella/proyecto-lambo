@@ -1,0 +1,453 @@
+ console.log("LAMBO FRONTEND CONECTADO");
+ 
+ const usuario =[
+                        "",
+                        "58 RAFAEL DE LA CRUZ",
+                        "63 ANDREA URZUA",
+                        "64 ALFREDO OLAGUE",
+                        "29 CLAUDIA RUEDAS",
+                        "25 TERESA PEREZ",
+                        "49 MARCOS NUÑEZ",
+                        "48 MARCOS VELAZQUEZ",
+                        "5 GABRIEL NAVA CHAVER",
+                        "11 JESUS MERCADO DURAN",
+                        "33 EDGAR PEÑA",
+                        "19 JAVIER TELLEZ",
+                        "38 IVAN LARA",
+                        "44 MARIO URZUA",
+                        "ABASTECIMIENTO CEDIS",
+                        "ALMACEN CEDIS",
+                        "ALMACEN MH",
+                        "ARACELI DE LEON",
+                        "BERENICE RODRIGUEZ",
+                        "CARLOS MONDRAGON",
+                        "CARLOS SANTIAGO",
+                        "CAROLINA PERÉZ RENTERIA",
+                        "CECILIA SANDOVAL",
+                        "Cesar Valadao",
+                        "Christian Vera",
+                        "DANIELA ONTIVEROS",
+                        "EDUARDO GASCA",
+                        "Esdenia Ramirez",
+                        "ESMERALDA RODRIGUEZ",
+                        "HECTOR ANAYA",
+                        "Iram Hernández",
+                        "ITZEL GONZALEZ",
+                        "ITZELA FLORES",
+                        "IVAN PANTOJA",
+                        "Jaime Ramos",
+                        "JORGE HERNANDEZ",
+                        "JULIAN GASCA",
+                        "Laura Villegas",
+                        "LAURA VILLEGAS",
+                        "LAURA ZAPATA",
+                        "LIZBETH URZUA",
+                        "LIZETH CACIQUE",
+                        "LIZETH CACIQUE",
+                        "MARISOL ZARATE",
+                        "MARTIN ZALDIVAR",
+                        "Martin Zaldivar",
+                        "MIRIAN CEDIS",
+                        "NANCY GARCÍA",
+                        "NIZA BODEGA CALCENEO",
+                        "PAOLA CRUZ",
+                        "Rafael Dorantes",
+                        "REBECA ANGUIANO",
+                        "ROSELDA HERNANDEZ",
+                        "ROSELDA HERNANDEZ",
+                        "VANESA GARCIA",
+                        "VERONICA CASTAÑEDA",
+                        "VERONICA TERRAZAS",
+                        "VICTOR ORTIZ",
+                        "VIRIDIANA ALVARADO",
+                        "1 EBER MORA MORA",
+                        "7 CESAR ALEJANDRO BAEZ VELAZCO",
+                        "9 MARCO AURELIO DEYTA ZAMORA",
+                        "10 MA DE LOS ANGELES REVILLA BELT",
+                        "34 LUIS BOTELLO",
+                        "36 MANUEL HUERTA",
+                        "37 ENRIQUE FRAUSTO",
+                        "42 GIVA LINARES",
+                        "47 ISABEL MUÑOZ",
+                        "50 ALEJANDRA ROCHA",
+                        "52 MARCELA CLEMENTE",
+                        "53 SIBONEY GONZALEZ",
+                        "54 IVONNE ROSAS",
+                        "57 BRYAN HERRERA",
+                        "59 CLAUDIA CORREA",
+                        "61 YAZMIN VARGAS",
+                        "62 VALENTINA MORA",
+                        "65 ADRIANA IÑIGUEZ",
+                        "ROSA ISELA LUIS SUAREZ",
+                        "Cecilia Hernandez",
+                        "MARIO TORRES",
+                        "ITZEL SANDOVAL",
+                        "DORIS GARCIA",
+                        "FRANCISCO RODRIGUEZ CONTRERAS",
+                        "KAREN OROPEZA",
+                        "CRISTHIAN ESTRADA",
+                        "MONTSERRAN REYES OLIVEROS",
+                        "MARIA DEL CARMEN MARTINEZ MARTINEZ",
+                        "cesar",
+                        "EFREN CABAÑAS",
+                        "PABLO ROBLES",
+                        "PABLO ROBLES",
+                        "ALEJANDRO GUZMAN",
+                        "EDUARDO FIERROS",
+                        "CARLOS FRANCISCO SANTIAGO ARANDA",
+                        "LETICIA ESTRADA",
+                        "ALEXIS IGNACIO FLORES DORADO",
+                        "ERNESTO JONATHAN VELAZQUEZ DURAN",
+                        "MARIA DEL CARMEN MARTINEZ MARTINEZ",
+                        "IRENE CHOCOTECO",
+                        "LIZETH GUADALUPE RUVALCABA SANDOVAL",
+                        "BRENDA SARAHI OLIVARES CERPA",
+                        "JOSE FERNANDO ALVAREZ ZAPATA",
+                        "ARACELI PONCE GONZALEZ",
+                        "NINA LIZETH ESQUIVEL TRUJILLO",
+                        "MARIA DEL CARMEN MARTINEZ MARTINEZ",
+                        "ANA KAREN VIRUETE PLAZOLA",
+                        "RODRIGO OLMEDO",
+                        "VALENTINA MORA",
+                        "SANTIAGO MORA",
+                        "MARIA LIZETH TELLES MARTINEZ",
+                        "ANGELES ISABEL MACIAS REGALADO",
+                        "ISMAEL ALEJANDRO VILLALOBOS SALAZAR",
+                        "WALTER NATHAN ZURI ARENAS OLMOS",
+                        "Andrea Lizeth Lara Garcia",
+                        "CARLOS ENRIQUE ORTIZ CONTRERAS",
+                        "HELENA HAZEL AVIÑA",
+                        "CARLOS ALBERTO MIRANDA",
+                        "PAMELA AMEYALI HERNANDEZ QUINTERO",
+                        "Yahir Alejandro Ramirez Morones",
+                        "CLAUDIA CONCEPCIÓN POZOS BARAJAS",
+                        "LUIS ALBERTO MUÑOZ ROSALES",
+                        "JENNIFER AGUILAR SEGUNDO",
+                        "RUBI CAROLINA LOPEZ SALAZR",
+                        "CLAUDIA CORTINA",
+                        "ISABEL HINOJOSA",
+                        "ABRAHAM ISRAEL ESTRADA",
+                        "DIANA KRISTEL ALVAREZ DIAZ",
+                        "LUIS ALBERTO GOMEZ QUINTERO",
+                        "MONSERRAT VERDUZCO",
+                        "MARIA DEL CARMEN MARTINEZ MARTINEZ",
+                        "VALERIA RODRIGUEZ",
+                        "RODRIGO ALBERTO RAMOS ESTRADA",
+                        "MERCEDES CIPRIANO HARO",
+                        "MERCEDES CIPRIANO HARO",
+                        "ARELI CORTINA",
+                        "KARINA VACA CHAVIRA",
+                        "MARIANA JIMENEZ GONZALEZ"
+                    ];
+
+        function llenarSelect(id, data) {
+            const select = document.getElementById(id);
+
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item;
+                option.textContent = item;
+                select.appendChild(option);
+            });
+                    }
+
+        llenarSelect("solicita", usuario);
+        llenarSelect("autoriza", usuario);
+
+        const depart = [
+                        "",
+                        "ALMACÉN",
+                        "ALMACÉN : ALMACEN AUTOSERVICIO",
+                        "ALMACÉN : CEDIS",
+                        "AUTOSERVICIO",
+                        "COMPRAS",
+                        "CONTABILIDAD",
+                        "CONTABILIDAD : CRÉDITO Y COBRANZA",
+                        "CONTABILIDAD : TESORERIA",
+                        "DIRECCION",
+                        "DIRECCION : DIRECCCION GENERAL",
+                        "DIRECCION : DIRECCION ADMINISTRATIVA",
+                        "ECOMMERCE",
+                        "ECOMMERCE : AMAZON",
+                        "ECOMMERCE : BELLEZA EN LINEA",
+                        "ECOMMERCE : MERCADO LIBRE",
+                        "INTENDENCIA",
+                        "MANTENIMIENTO",
+                        "MERCADOTÉCNIA : SOCIAL MEDIA",
+                        "NUEVOS PROYECTOS",
+                        "OFICINA MEXICO",
+                        "RECURSOS HUMANOS",
+                        "RECURSOS HUMANOS : CAPACITACION",
+                        "RECURSOS HUMANOS : NOMINAS",
+                        "RECURSOS HUMANOS : RECEPCION",
+                        "RECURSOS HUMANOS : RECLUTAMIENTO",
+                        "TECNOLOGÍA DE LA INFORMACIÓN",
+                        "VENTAS",
+                        "VENTAS : MAYOREO",
+                        "VENTAS : TELEMARKETING",
+                        "VIGILANCIA"
+                    ];
+
+        const selectElement3 = document.getElementById("departamento");
+
+        depart.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user;
+            option.textContent = user;
+            selectElement3.appendChild(option);
+        });
+
+        const codImp = [
+                    "",
+                    "ISR:GPO IVA 16% / IVA RETENIDO 16% pgos al extranjero",
+                    "ISR:GPO RESICO IVA 0%",
+                    "ISR:GPO RET ARRNDAMIENTO INMUEBLES",
+                    "ISR:GPO RET ARRNDAMIENTO RESICO",
+                    "ISR:GPO RET IVA 8%, ISR 1.25%",
+                    "ISR:GPO RET RESICO",
+                    "ISR:GPO RET S.PROFECIONALES (RESICO)",
+                    "ISR:GPO RET SERVICIOS PERSOLNALES (RESICO)",
+                    "IVA 8%:IVA 8%",
+                    "IVA acreditable 16% pagos al extranjero:IVA ACRED. 16% PAGOS AL EXTRANJERO",
+                    "IVA acreditable 4%:IVA 4%",
+                    "IVA_MX 16%:GPO RET COMISION",
+                    "IVA_MX 16%:IVA16%",
+                    "RET ISR HONORARIOS 10%:RET ISR HONORARIOS 10%",
+                    "RET ISR RENTAS 10%:RET ISR RENTAS 10%",
+                    "RET IVA 16% pagos al extranjero:RET. IVA 16% pagos al extranjero",
+                    "RET IVA FLETE 4%:GPO RET IVA FLETES 4%",
+                    "RET IVA FLETE 4%:RET IVA FLETES 4%",
+                    "RET IVA HONORARIOS 10.67%:GPO RET HONORARIOS",
+                    "RET IVA HONORARARIOS 10.67%:RET IVA HONORARIOS 10.67%",
+                    "RET IVA RENTAS 10.67%:GPO RET IVA RENTAS",
+                    "VAT_MX:GPO RET SERVICIOS PERSONALES",
+                    "VAT_MX:UNDEF-MX"
+                ];
+
+        const selectElement4 = document.getElementById("cod_imp");
+
+        codImp.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user;
+            option.textContent = user;
+            selectElement4.appendChild(option);
+        });
+
+        const cuenta = [
+                    "",
+                    "601-02-001 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Uniformes",
+                    "601-02-002 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Eventos de capacitación al personal",
+                    "601-02-003 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Traslado de personal",
+                    "601-02-004 GASTOS : MANO DE OBRA CONTRATADA : PRESTACIONES AL PERSONAL : Reclutamiento de personal",
+                    "602-01-000 GASTOS : GASTOS FIJOS : Arrendamiento de inmuebles (PF)",
+                    "602-02-000 GASTOS : GASTOS FIJOS : Arrendamiento de inmuebles (PM)",
+                    "602-03-000 GASTOS : GASTOS FIJOS : Energía eléctrica",
+                    "602-04-000 GASTOS : GASTOS FIJOS : Agua",
+                    "603-01-000 GASTOS : SERVICIOS DE COMUNICACIÓN : Internet",
+                    "603-02-000 GASTOS : SERVICIOS DE COMUNICACIÓN : Celulares",
+                    "603-03-000 GASTOS : SERVICIOS DE COMUNICACIÓN : Teléfono",
+                    "604-01-000 GASTOS : SERVICIOS Y ASESORÍAS : Asesoría Fiscal",
+                    "604-03-000 GASTOS : SERVICIOS Y ASESORÍAS : Suscripciones",
+                    "605-01-000 GASTOS : PAPELERÍA Y ARTÍCULOS DE OFICINA : Papelería y artí­culos de oficina",
+                    "606-01-000 GASTOS : EQUIPO DE COMPUTO Y COMUNICACIÓN : Arrendamiento de Equipo de Computo",
+                    "606-02-000 GASTOS : EQUIPO DE COMPUTO Y COMUNICACIÓN : Mantenimiento de Equipo de Computo",
+                    "608-01-000 GASTOS : EQUIPO DE TRANSPORTE : Arrendamiento de Equipo de Transporte",
+                    "608-02-000 GASTOS : EQUIPO DE TRANSPORTE : Combustibles",
+                    "608-03-000 GASTOS : EQUIPO DE TRANSPORTE : Seguro de Equipo de Transporte",
+                    "608-04-000 GASTOS : EQUIPO DE TRANSPORTE : Mantenimiento de Equipo de Transporte",
+                    "608-05-000 GASTOS : EQUIPO DE TRANSPORTE : Placas",
+                    "608-06-000 GASTOS : EQUIPO DE TRANSPORTE : Tenencia y Refrendo",
+                    "610-01-000 GASTOS : GASTOS DE VENTA : Plataformas di­gitales",
+                    "610-02-000 GASTOS : GASTOS DE VENTA : Comisiones por venta",
+                    "610-04-001 GASTOS : GASTOS DE VENTA : ENVIOS : Mensajería y paquetería",
+                    "610-04-002 GASTOS : GASTOS DE VENTA : ENVIOS : Fletes",
+                    "610-04-003 GASTOS : GASTOS DE VENTA : ENVIOS : Maniobras",
+                    "610-04-004 GASTOS : GASTOS DE VENTA : ENVIOS : Seguro de traslado de mercancías",
+                    "611-01-000 GASTOS : PUBLICIDAD : Manejo de redes sociales",
+                    "611-02-000 GASTOS : PUBLICIDAD : Registro de marcas",
+                    "611-03-000 GASTOS : PUBLICIDAD : Publicidad en Internet",
+                    "611-04-000 GASTOS : PUBLICIDAD : Publicidad Impresa",
+                    "611-05-000 GASTOS : PUBLICIDAD : Lanzamientos de marcas y/o productos",
+                    "611-06-000 GASTOS : PUBLICIDAD : Exhibidores",
+                    "611-07-000 GASTOS : PUBLICIDAD : Stand",
+                    "611-08-000 GASTOS : PUBLICIDAD : Pagina en Internet",
+                    "611-09-000 GASTOS : PUBLICIDAD : Articulos promocionales",
+                    "612-01-000 GASTOS : GASTOS GENERALES : Agua embotellada",
+                    "612-02-000 GASTOS : GASTOS GENERALES : Pastas y café",
+                    "612-03-000 GASTOS : GASTOS GENERALES : Artí­culos de limpieza",
+                    "612-04-000 GASTOS : GASTOS GENERALES : Botiquin",
+                    "612-05-000 GASTOS : GASTOS GENERALES : Recolección de basura",
+                    "612-06-000 GASTOS : GASTOS GENERALES : Fumigaciones",
+                    "612-07-000 GASTOS : GASTOS GENERALES : Consumos de alimentos",
+                    "612-09-000 GASTOS : GASTOS GENERALES : Utensilios varios",
+                    "612-10-000 GASTOS : GASTOS GENERALES : Herramientas",
+                    "613-01-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Alimentos",
+                    "613-02-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Hospedaje",
+                    "613-03-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Gasolina",
+                    "613-04-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Casetas",
+                    "613-05-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Transporte",
+                    "613-06-000 GASTOS : VIATICOS Y GASTOS DE VIAJE : Viaticos sin comprobante fiscal",
+                    "614-01-000 GASTOS : SEGURIDAD : Servicio de vigilancia (Alarmas)",
+                    "614-02-000 GASTOS : SEGURIDAD : Extintores",
+                    "614-03-000 GASTOS : SEGURIDAD : Señalización",
+                    "614-04-000 GASTOS : SEGURIDAD : Mtto. equipo de vigilancia",
+                    "614-05-000 GASTOS : SEGURIDAD : Seguridad privada",
+                    "615-01-000 GASTOS : MANTENIMIENTO DE OFICINAS : Mantenimiento de Oficinas",
+                    "616-01-000 GASTOS : GASTOS SIN REQUISITOS FISCALES : Gastos sin requisitos fiscales",
+                    "616-02-000 GASTOS : GASTOS SIN REQUISITOS FISCALES : Multas",
+                    "616-07-000 GASTOS : GASTOS SIN REQUISITOS FISCALES : Consumo en restaurantes (ND)",
+                    "617-02-000 GASTOS : IMPUESTOS Y DERECHOS : Licencia municipal",
+                    "617-03-000 GASTOS : IMPUESTOS Y DERECHOS : Impuesto predial",
+                    "617-04-000 GASTOS : IMPUESTOS Y DERECHOS : Verificación",
+                    "618-01-000 GASTOS : SOFTWARE : NetSuite",
+                    "618-02-000 GASTOS : SOFTWARE : Licencias Microsoft 365",
+                    "618-03-000 GASTOS : SOFTWARE : Codigo de barras",
+                    "618-04-000 GASTOS : SOFTWARE : Programa editor de PDF",
+                    "618-05-000 GASTOS : SOFTWARE : Miadminxml",
+                    "618-06-000 GASTOS : SOFTWARE : Botcenter",
+                    "618-07-000 GASTOS : SOFTWARE : Nomipaq",
+                    "618-08-000 GASTOS : SOFTWARE : Contpaq",
+                    "618-09-000 GASTOS : SOFTWARE : Programa de diseño grafico (Pantone connect)",
+                    "618-10-000 GASTOS : SOFTWARE : Aplicaciones para pagina de Internet"
+                ];
+
+        const selectElement5 = document.getElementById("cuenta");
+
+        cuenta.forEach(user => {
+            const option = document.createElement("option");
+            option.value = user;
+            option.textContent = user;
+            selectElement5.appendChild(option);
+        });
+
+        const fileInput = document.querySelector('input[name="xmlFiles"]');
+        const xmlList = document.getElementById('xmlList');
+
+        fileInput.addEventListener('change', (e) => {
+            xmlList.innerHTML = ""; //Limpiar Lista
+
+            const files = e .target.files;
+
+            for (let i =0; i < files.length; i++) {
+                crearFilaXML(files[i], i);
+            }
+        });
+
+        function crearFilaXML(file, index) {
+            const row = document.createElement("div");
+            row.style.border = "1px solid #ccc";
+            row.style.padding = "10px";
+            row.style.marginBottom = "5px";
+
+            row.innerHTML = `
+                <strong>${file.name}</strong>
+                <br><br>
+
+                <label>Cuenta 1:</label>
+                <select name="cuenta_${index}">
+                    ${generarOpcionesCuenta()}
+                </select>
+
+                <div id="monto1_${index}"
+                    style="display:none; margin-top:10px;">
+
+                    <label>Monto Cuenta 1:</label>
+                    <input
+                        type="number"
+                        name="monto_${index}"
+                        step="0.01"
+                        min="0"
+                    />
+                </div>
+
+                <br><br>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        onchange="toggleSegundaCuenta(this, ${index})"
+                    >
+                    Segunda cuenta
+                </label>
+
+                <div id="extra_${index}"
+                    style="display:none; margin-top:10px;">
+
+                    <label>Cuenta 2:</label>
+                    <select name="cuenta2_${index}">
+                        ${generarOpcionesCuenta()}
+                    </select>
+
+                    <label>Monto Cuenta 2:</label>
+                    <input
+                        type="number"
+                        name="monto2_${index}"
+                        step="0.01"
+                        min="0"
+                    />
+
+                </div>
+            `;
+            xmlList.appendChild(row);
+        }
+
+        function generarOpcionesCuenta() {
+            return cuenta.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        function toggleSegundaCuenta(checkbox, index) {
+
+            const extra =
+            document.getElementById(`extra_${index}`);
+
+            const monto1 =
+            document.getElementById(`monto1_${index}`);
+
+            if (checkbox.checked) {
+
+                extra.style.display = "block";
+                monto1.style.display = "block";
+
+            } else {
+
+                extra.style.display = "none";
+                monto1.style.display = "none";
+
+                document.querySelector(
+                    `input[name="monto_${index}"]`
+                ).value = "";
+
+                document.querySelector(
+                    `input[name="monto2_${index}"]`
+                ).value = "";
+
+            }
+        }
+
+        document.getElementById("modo")
+        .addEventListener("change", (e) => {
+
+            const modo = e.target.value;
+
+            const cuentaGeneral =
+            document.querySelector(
+                'select[name="cuenta"]'
+            );
+
+            const xmlSection =
+            document.getElementById("xmlSection");
+
+            if (modo === "multi") {
+
+                cuentaGeneral.disabled = true;
+
+                xmlSection.style.display = "block";
+
+            } else {
+
+                cuentaGeneral.disabled = false;
+
+                xmlSection.style.display = "none";
+
+            }
+        });
