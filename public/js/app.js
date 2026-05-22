@@ -338,16 +338,35 @@
             row.style.border = "1px solid #ccc";
             row.style.padding = "10px";
             row.style.marginBottom = "5px";
+            row.classList.add("xml-card");
 
             row.innerHTML = `
-                <strong>${file.name}</strong>
+                <div class="xml-header">
+
+                    <div class="xml-badge">
+                        XML cargado
+                    </div>
+
+                    <div class="xml-file-container">
+
+                        <span class="file-icon">
+                            📄
+                        </span>
+
+                        <span class="xml-name">
+                            ${file.name}
+                        </span>
+
+                    </div>
+
+                </div>
                 <br><br>
 
                 <label>Cuenta 1:</label>
                 <select name="cuenta_${index}">
                     ${generarOpcionesCuenta()}
                 </select>
-
+            <div class="account-layout">
                 <div id="monto1_${index}"
                     style="display:none; margin-top:10px;">
 
@@ -357,36 +376,49 @@
                         name="monto_${index}"
                         step="0.01"
                         min="0"
+                        class="input monto-input"
                     />
                 </div>
 
                 <br><br>
 
-                <label>
-                    <input
-                        type="checkbox"
-                        onchange="toggleSegundaCuenta(this, ${index})"
-                    >
-                    Segunda cuenta
-                </label>
+                <div class="second-account-toggle">
 
-                <div id="extra_${index}"
-                    style="display:none; margin-top:10px;">
+                    <label class="checkbox-label">
 
-                    <label>Cuenta 2:</label>
-                    <select name="cuenta2_${index}">
-                        ${generarOpcionesCuenta()}
-                    </select>
+                        <input
+                            type="checkbox"
+                            id="segundaCuenta_${index}"
+                            onchange="toggleSegundaCuenta(this, ${index})"
+                        >
 
-                    <label>Monto Cuenta 2:</label>
-                    <input
-                        type="number"
-                        name="monto2_${index}"
-                        step="0.01"
-                        min="0"
-                    />
+                        Agregar segunda cuenta
+
+                    </label>
 
                 </div>
+
+                <div class="second-account-card">
+                    <div id="extra_${index}"
+                        style="display:none; margin-top:10px;">
+
+                        <label>Cuenta 2:</label>
+                        <select name="cuenta2_${index}">
+                            ${generarOpcionesCuenta()}
+                        </select>
+
+                        <label>Monto Cuenta 2:</label>
+                        <input
+                            type="number"
+                            name="monto2_${index}"
+                            step="0.01"
+                            min="0"
+                            class="input monto-input"
+                        />
+
+                    </div>
+                </div>    
+            </div>
             `;
             xmlList.appendChild(row);
         }

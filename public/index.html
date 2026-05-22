@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XML Masivo</title>
     <link rel="stylesheet" href="/public/css/style.css">
+
+    <div class="header">
+
+    <div class="brand-section">
+
+        <img
+            src="/public/assets/logo.jpeg"
+            alt="Inobella"
+            class="logo"
+        >
+
+        <div>
+
+            <h1 class="title">
+                Carga Masiva XML
+            </h1>
+
+            <p class="subtitle">
+                Automatización de carga
+                masiva de XML para NetSuite
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
 </head>
 <body>
 
     <div class="app">
 
         <div class="card">
-
-            <h1 class="title">Carga Masiva XML</h1>
 
 
     <form id="formXML" action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
@@ -26,13 +50,19 @@
             <input type="text" name="idExterno" class="input" placeholder="Ej: 810210" step="1" min="0" required />
         </div>
 
-        <div class="form-section">
+    <div class="form-grid">
+
+        <div class="field">
             <label>Solicita</label>
             <select name="solicita" id="solicita" class="input" required></select>
+        </div>
 
+        <div class="field">
             <label>Autoriza</label>
             <select name="autoriza" id="autoriza" class="input" required></select>
-        
+        </div>
+
+        <div class="field">
             <label>Elaborado por</label>
             <select name="elabora" id="elabora" class="input" required>
                 <option value=""></option>
@@ -42,24 +72,105 @@
             </select>
         </div>
 
-        <div>
-            <label class="form-section">Departamento</label>
-            <select name="departamento" id="departamento" class="input" required></select>
-            
+        <div class="field">
+            <label>Departamento</label>
+            <select
+                name="departamento"
+                id="departamento"
+                class="input"
+                required
+            ></select>
+        </div>
+
+        <div class="field">
+            <label>Canal de Venta</label>
+
+            <select
+                name="canalVenta"
+                id="cv"
+                class="input"
+                required
+            >
+                <option value=""></option>
+                <option value="AUTOSERVICIO">
+                    AUTOSERVICIO
+                </option>
+                <option value="ECOMMERCE">
+                    ECOMMERCE
+                </option>
+                <option value="MAYOREO">
+                    MAYOREO
+                </option>
+                <option value="TELEMARKETING">
+                    TELEMARKETING
+                </option>
+            </select>
+        </div>
+
+        <div class="field">
+
+            <label>
+                Estado de Aprobación
+            </label>
+
+            <select
+                name="estadoAprobacion"
+                id="est_aprob"
+                class="input"
+                required
+            >
+                <option value=""></option>
+                <option>
+                    Pendiente de Aprobación
+                </option>
+                <option>
+                    Aprobado
+                </option>
+                <option>
+                    Rechasado
+                </option>
+            </select>
+        </div>
+
+        <div class="field">
             <label>Clase</label>
-            <select name="clase" id="clase" class="input" required>
+
+            <select
+                name="clase"
+                id="clase"
+                class="input"
+                required
+            >
                 <option value=""></option>
                 <option value="ATENEA">ATENEA</option>
-                <option value="Colaboración Luis Torres">Colaboración Luis Torres</option>
-                <option value="Colaboración Rosy McMichael">Colaboración Rosy McMichael</option>
+                <option value="Colaboración Luis Torres">
+                    Colaboración Luis Torres
+                </option>
+                <option value="Colaboración Rosy McMichael">
+                    Colaboración Rosy McMichael
+                </option>
                 <option value="DG">DG</option>
-                <option value="Expo CDMX">Expo CDMX</option>
-                <option value="Expo GDL">Expo GDL</option>
-                <option value="MH BEAUTY">MH BEAUTY</option>
-                <option value="Supplies">Supplies</option>
-                <option value="Thue Lashes">Thue Lashes</option>
-                <option value="TRUE MAKEUP">TRUE MAKEUP</option>
+                <option value="Expo CDMX">
+                    Expo CDMX
+                </option>
+                <option value="Expo GDL">
+                    Expo GDL
+                </option>
+                <option value="MH BEAUTY">
+                    MH BEAUTY
+                </option>
+                <option value="Supplies">
+                    Supplies
+                </option>
+                <option value="Thue Lashes">
+                    Thue Lashes
+                </option>
+                <option value="TRUE MAKEUP">
+                    TRUE MAKEUP
+                </option>
             </select>
+        </div>
+        <div class="field">
 
             <label>Canal de Venta</label>
             <select name="canalVenta" id="cv" class="input" required>
@@ -69,6 +180,9 @@
                 <option value="MAYOREO">MAYOREO</option>
                 <option value="TELEMARKETING">TELEMARKETING</option>
             </select>
+        </div>
+
+        <div class="field">
 
             <label>Estado de Aprobación</label>
             <select name="estadoAprobacion" id="est_aprob" class="input" required>
@@ -79,14 +193,16 @@
             </select>
         </div>
 
-        <div class="form-section">
+        <div class="field">
             <label>Código de Impuesto</label>
             <select name="codigoImpuesto" id="cod_imp" class="input" required></select>
+        </div>
 
+        <div class="field">
             <label>Cuenta</label>
             <select name="cuenta" required id="cuenta" class="input" required></select>
         </div>
-
+    </div>
         <div class="form-section">
             <label>Modo:</label>
             <select name="modo" id="modo" class="input">
@@ -113,7 +229,7 @@
 
    
 
-    <script src="/public/js/js/app.js"></script>
+    <script src="js/app.js"></script>
  
 </body>
 </html>
