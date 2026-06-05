@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 
     <div class="header">
 
     <div class="brand-section">
 
         <img
-            src="/assets/logo.jpeg"
+            src="/public/assets/logo.jpeg"
             alt="Inobella"
             class="logo"
         >
@@ -171,46 +171,26 @@
                 </option>
             </select>
         </div>
-        <div class="field">
-
-           <!-- <label>Canal de Venta</label>
-            <select name="canalVenta" id="cv" class="input" required>
-                <option value=""></option>
-                <option value="AUTOSERVICIO">AUTOSERVICIO</option>
-                <option value="ECOMMERCE">ECOMMERCE</option>
-                <option value="MAYOREO">MAYOREO</option>
-                <option value="TELEMARKETING">TELEMARKETING</option>
-            </select>
-        </div>
-
-        <div class="field">
-
-            <label>Estado de Aprobación</label>
-            <select name="estadoAprobacion" id="est_aprob" class="input" required>
-                <option value=""></option>
-                <option>Pendiente de Aprobación</option>
-                <option>Aprobado</option>
-                <option>Rechasado</option>
-            </select>
-        </div>-->
 
         <div class="field">
             <label>Código de Impuesto</label>
             <select name="codigoImpuesto" id="cod_imp" class="input" required></select>
         </div>
 
-        <div class="field">
+        <div class="field field-full">
             <label>Cuenta</label>
             <select name="cuenta" required id="cuenta" class="input" required></select>
         </div>
-    </div>
-        <div class="form-section">
+
+        <div class="field field-full">
             <label>Modo:</label>
             <select name="modo" id="modo" class="input">
                 <option value="general">General</option>
                 <option value="multi">Multicuentas</option>
             </select>
         </div>
+    </div>
+        
 
         <div
             class="form-section"
@@ -224,8 +204,9 @@
                 class="xml-container"
             ></div>
         </div>
-
+        <div class="button-container">
              <button type="submit" class="btn-primary">Generar CSV</button>
+       </div>
     </form>
 
    

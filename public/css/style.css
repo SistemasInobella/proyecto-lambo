@@ -92,7 +92,8 @@ input:focus{
 
 /* Boton */
 .btn-primary{
-    width:100%;
+    width: 100%;
+    margin-top: 25px;
     padding: 16px;
     border:none;
     border-radius: 12px;
@@ -355,4 +356,13 @@ input:focus{
 .monto-input{
     width:280px;
     max-width:100%;
+}
+
+.field-full{
+    grid-column: span 3;
+}
+
+.button-container{
+    display:flex;
+    justify-content:center;
 }
