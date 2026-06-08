@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" 
+    href="/css/style.css">
 
     <div class="header">
 
@@ -39,175 +40,178 @@
         <div class="card">
 
 
-    <form id="formXML" action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
-        
-        
-        <div class="form-section">
-            <label>Subir XMLs</label>
-            <input type="file" name="xmlFiles" multiple class="input" required/>
+        <form id="formXML"
+            action="/upload"
+            method="post"
+            enctype="multipart/form-data">
+            
+            
+            <div class="form-section">
+                <label>Subir XMLs</label>
+                <input type="file" name="xmlFiles" multiple class="input" required/>
 
-            <label>ID Externo</label>
-            <input type="text" name="idExterno" class="input" placeholder="Ej: 810210" step="1" min="0" required />
+                <label>ID Externo</label>
+                <input type="text" name="idExterno" class="input" placeholder="Ej: 810210" step="1" min="0" required />
+            </div>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Solicita</label>
+                <select name="solicita" id="solicita" class="input" required></select>
+            </div>
+
+            <div class="field">
+                <label>Autoriza</label>
+                <select name="autoriza" id="autoriza" class="input" required></select>
+            </div>
+
+            <div class="field">
+                <label>Elaborado por</label>
+                <select name="elabora" id="elabora" class="input" required>
+                    <option value=""></option>
+                    <option value="JOSE FERNANDO ALVAREZ ZAPATA">Jose Fernando Álvarez</option>
+                    <option value="BERENICE RODRIGUEZ">Berenice Rodriguez solís</option>
+                    <option value="">Maria Esther Gómez Ruelas</option>
+                    <option value="">Magdalena Cabello Sandoval</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Departamento</label>
+                <select
+                    name="departamento"
+                    id="departamento"
+                    class="input"
+                    required
+                ></select>
+            </div>
+
+            <div class="field">
+                <label>Canal de Venta</label>
+
+                <select
+                    name="canalVenta"
+                    id="cv"
+                    class="input"
+                    required
+                >
+                    <option value=""></option>
+                    <option value="AUTOSERVICIO">
+                        AUTOSERVICIO
+                    </option>
+                    <option value="ECOMMERCE">
+                        ECOMMERCE
+                    </option>
+                    <option value="MAYOREO">
+                        MAYOREO
+                    </option>
+                    <option value="TELEMARKETING">
+                        TELEMARKETING
+                    </option>
+                </select>
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Estado de Aprobación
+                </label>
+
+                <select
+                    name="estadoAprobacion"
+                    id="est_aprob"
+                    class="input"
+                    required
+                >
+                    <option value=""></option>
+                    <option>
+                        Pendiente de Aprobación
+                    </option>
+                    <option>
+                        Aprobado
+                    </option>
+                    <option>
+                        Rechasado
+                    </option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Clase</label>
+
+                <select
+                    name="clase"
+                    id="clase"
+                    class="input"
+                    required
+                >
+                    <option value=""></option>
+                    <option value="ATENEA">ATENEA</option>
+                    <option value="Colaboración Luis Torres">
+                        Colaboración Luis Torres
+                    </option>
+                    <option value="Colaboración Rosy McMichael">
+                        Colaboración Rosy McMichael
+                    </option>
+                    <option value="DG">DG</option>
+                    <option value="Expo CDMX">
+                        Expo CDMX
+                    </option>
+                    <option value="Expo GDL">
+                        Expo GDL
+                    </option>
+                    <option value="MH BEAUTY">
+                        MH BEAUTY
+                    </option>
+                    <option value="Supplies">
+                        Supplies
+                    </option>
+                    <option value="Thue Lashes">
+                        Thue Lashes
+                    </option>
+                    <option value="TRUE MAKEUP">
+                        TRUE MAKEUP
+                    </option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Código de Impuesto</label>
+                <select name="codigoImpuesto" id="cod_imp" class="input" required></select>
+            </div>
+
+            <div class="field field-full">
+                <label>Cuenta</label>
+                <select name="cuenta" required id="cuenta" class="input" required></select>
+            </div>
+
+            <div class="field field-full">
+                <label>Modo:</label>
+                <select name="modo" id="modo" class="input">
+                    <option value="general">General</option>
+                    <option value="multi">Multicuentas</option>
+                </select>
+            </div>
         </div>
-
-    <div class="form-grid">
-
-        <div class="field">
-            <label>Solicita</label>
-            <select name="solicita" id="solicita" class="input" required></select>
-        </div>
-
-        <div class="field">
-            <label>Autoriza</label>
-            <select name="autoriza" id="autoriza" class="input" required></select>
-        </div>
-
-        <div class="field">
-            <label>Elaborado por</label>
-            <select name="elabora" id="elabora" class="input" required>
-                <option value=""></option>
-                <option value="JOSE FERNANDO ALVAREZ ZAPATA">Jose Fernando Álvarez</option>
-                <option value="BERENICE RODRIGUEZ">Berenice Rodriguez solís</option>
-                <option value="">Maria Esther Gómez Ruelas</option>
-                <option value="">Magdalena Cabello Sandoval</option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label>Departamento</label>
-            <select
-                name="departamento"
-                id="departamento"
-                class="input"
-                required
-            ></select>
-        </div>
-
-        <div class="field">
-            <label>Canal de Venta</label>
-
-            <select
-                name="canalVenta"
-                id="cv"
-                class="input"
-                required
-            >
-                <option value=""></option>
-                <option value="AUTOSERVICIO">
-                    AUTOSERVICIO
-                </option>
-                <option value="ECOMMERCE">
-                    ECOMMERCE
-                </option>
-                <option value="MAYOREO">
-                    MAYOREO
-                </option>
-                <option value="TELEMARKETING">
-                    TELEMARKETING
-                </option>
-            </select>
-        </div>
-
-        <div class="field">
-
-            <label>
-                Estado de Aprobación
-            </label>
-
-            <select
-                name="estadoAprobacion"
-                id="est_aprob"
-                class="input"
-                required
-            >
-                <option value=""></option>
-                <option>
-                    Pendiente de Aprobación
-                </option>
-                <option>
-                    Aprobado
-                </option>
-                <option>
-                    Rechasado
-                </option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label>Clase</label>
-
-            <select
-                name="clase"
-                id="clase"
-                class="input"
-                required
-            >
-                <option value=""></option>
-                <option value="ATENEA">ATENEA</option>
-                <option value="Colaboración Luis Torres">
-                    Colaboración Luis Torres
-                </option>
-                <option value="Colaboración Rosy McMichael">
-                    Colaboración Rosy McMichael
-                </option>
-                <option value="DG">DG</option>
-                <option value="Expo CDMX">
-                    Expo CDMX
-                </option>
-                <option value="Expo GDL">
-                    Expo GDL
-                </option>
-                <option value="MH BEAUTY">
-                    MH BEAUTY
-                </option>
-                <option value="Supplies">
-                    Supplies
-                </option>
-                <option value="Thue Lashes">
-                    Thue Lashes
-                </option>
-                <option value="TRUE MAKEUP">
-                    TRUE MAKEUP
-                </option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label>Código de Impuesto</label>
-            <select name="codigoImpuesto" id="cod_imp" class="input" required></select>
-        </div>
-
-        <div class="field field-full">
-            <label>Cuenta</label>
-            <select name="cuenta" required id="cuenta" class="input" required></select>
-        </div>
-
-        <div class="field field-full">
-            <label>Modo:</label>
-            <select name="modo" id="modo" class="input">
-                <option value="general">General</option>
-                <option value="multi">Multicuentas</option>
-            </select>
-        </div>
-    </div>
-        
-
-        <div
-            class="form-section"
-            id="xmlSection"
-            style="display:none;"
-        >
-            <h3>Archivos cargados</h3>
+            
 
             <div
-                id="xmlList"
-                class="xml-container"
-            ></div>
+                class="form-section"
+                id="xmlSection"
+                style="display:none;"
+            >
+                <h3>Archivos cargados</h3>
+
+                <div
+                    id="xmlList"
+                    class="xml-container"
+                ></div>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn-primary">Generar CSV</button>
         </div>
-        <div class="button-container">
-             <button type="submit" class="btn-primary">Generar CSV</button>
-       </div>
-    </form>
+        </form>
 
    
 
