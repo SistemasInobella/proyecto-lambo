@@ -486,12 +486,13 @@
             document.getElementById('formXML')
                 .addEventListener('submit', () => {
 
+                    console.log("SE EJECUTO EL SUBMIT");
+
                     setTimeout(() => {
 
                         document.getElementById('formXML').reset();
                         document.getElementById('xmlSection').style.display = 'none';
                         document.getElementById('xmlList').innerHTML = '';
-                        console.log("SE EJECUTO EL SUBMIT");
 
                     }, 1500);
 
