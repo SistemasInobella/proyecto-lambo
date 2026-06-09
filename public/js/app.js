@@ -482,4 +482,19 @@
                 xmlSection.style.display = "none";
 
             }
+
+            document.getElementById('formXML')
+                .addEventListener('submit', () => {
+
+                    setTimeout(() => {
+
+                        document.getElementById('formXML').reset();
+
+                        document.getElementById('xmlSection').style.display = 'none';
+
+                        document.getElementById('xmlList').innerHTML = '';
+
+                    }, 1500);
+
+                });
         });
