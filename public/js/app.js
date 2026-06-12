@@ -453,8 +453,9 @@
                 xmlSection.style.display = "none";
 
             }
+        });
 
-            document.getElementById('formXML')
+        document.getElementById('formXML')
                 .addEventListener('submit', () => {
 
                     console.log("SE EJECUTO EL SUBMIT");
@@ -468,4 +469,3 @@
                     }, 1500);
 
                 });
-        });
